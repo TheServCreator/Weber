@@ -53,7 +53,7 @@ export default function App() {
           <div className="brand">BRAND</div>
           <nav className="nav">
             {sections.map((id) => (
-              <a key={id} className={`navLink ${active === id ? "active" : ""}`} href={`#${id}`}> 
+              <a key={id} className={`navLink ${active === id ? "active" : ""}`} href={`#${id}`}>
                 {id.charAt(0).toUpperCase() + id.slice(1)}
               </a>
             ))}
