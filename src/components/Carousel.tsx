@@ -34,8 +34,8 @@ export default function Carousel({
 }: Props) {
   const prefersReduced = usePrefersReducedMotion();
 
-  // Autoplay plugin
-  const autoplay = useMemo(() => {
+  // Create autoplay plugin ONCE per (seconds, prefersReduced)
+  const autoplayPlugin = useMemo(() => {
     if (prefersReduced) return null;
     return Autoplay({
       delay: Math.max(1200, seconds * 1000),
@@ -44,14 +44,14 @@ export default function Carousel({
     });
   }, [seconds, prefersReduced]);
 
-  const plugins = useMemo(() => (autoplay ? [autoplay] : []), [autoplay]);
+  const plugins = useMemo(() => (autoplayPlugin ? [autoplayPlugin] : []), [autoplayPlugin]);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: "start",
       skipSnaps: false,
-      duration: 22, // smooth-ish snap animation
+      duration: 22,
     },
     plugins as any
   );
@@ -61,10 +61,15 @@ export default function Carousel({
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
 
-  // Progress bar
+  // Progress bar (no React state, only DOM)
   const rafRef = useRef<number | null>(null);
   const progressStartRef = useRef<number>(0);
   const progressRef = useRef<HTMLDivElement | null>(null);
+
+  const stopRaf = useCallback(() => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = null;
+  }, []);
 
   const resetProgress = useCallback(() => {
     if (!showProgress || prefersReduced) return;
@@ -80,7 +85,6 @@ export default function Carousel({
     const now = performance.now();
     const elapsed = now - progressStartRef.current;
     const p = Math.min(1, elapsed / (seconds * 1000));
-
     el.style.transform = `scaleX(${p})`;
 
     rafRef.current = requestAnimationFrame(tick);
@@ -88,20 +92,24 @@ export default function Carousel({
 
   const startRaf = useCallback(() => {
     if (!showProgress || prefersReduced) return;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    stopRaf();
     rafRef.current = requestAnimationFrame(tick);
-  }, [tick, showProgress, prefersReduced]);
+  }, [showProgress, prefersReduced, tick, stopRaf]);
 
-  const stopRaf = useCallback(() => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = null;
-  }, []);
+  // Idempotent setters (prevents update-depth loops)
+  const safeSet = {
+    selected: (v: number) => setSelected((p) => (p === v ? p : v)),
+    snapCount: (v: number) => setSnapCount((p) => (p === v ? p : v)),
+    canPrev: (v: boolean) => setCanPrev((p) => (p === v ? p : v)),
+    canNext: (v: boolean) => setCanNext((p) => (p === v ? p : v)),
+  };
 
-  const updateState = useCallback(() => {
+  const updateFromEmbla = useCallback(() => {
     if (!emblaApi) return;
-    setSelected(emblaApi.selectedScrollSnap());
-    setCanPrev(emblaApi.canScrollPrev());
-    setCanNext(emblaApi.canScrollNext());
+    safeSet.selected(emblaApi.selectedScrollSnap());
+    safeSet.snapCount(emblaApi.scrollSnapList().length);
+    safeSet.canPrev(emblaApi.canScrollPrev());
+    safeSet.canNext(emblaApi.canScrollNext());
   }, [emblaApi]);
 
   const scrollPrev = useCallback(
@@ -128,55 +136,59 @@ export default function Carousel({
     [emblaApi]
   );
 
-  // Pause when tab hidden
+  // Pause autoplay when tab hidden
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplayPlugin) return;
 
     const onVis = () => {
-      if (document.hidden) autoplay.stop();
-      else autoplay.play();
+      if (document.hidden) autoplayPlugin.stop();
+      else autoplayPlugin.play();
       resetProgress();
+      startRaf();
     };
 
     document.addEventListener("visibilitychange", onVis);
     return () => document.removeEventListener("visibilitychange", onVis);
-  }, [autoplay, resetProgress]);
+  }, [autoplayPlugin, resetProgress, startRaf]);
 
-  // Wire embla events
+  // Embla events with proper cleanup
   useEffect(() => {
     if (!emblaApi) return;
 
-    setSnapCount(emblaApi.scrollSnapList().length);
-    updateState();
-
     const onSelect = () => {
-      updateState();
+      updateFromEmbla();
       resetProgress();
+      startRaf();
     };
 
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", () => {
-      setSnapCount(emblaApi.scrollSnapList().length);
-      updateState();
+    const onReInit = () => {
+      updateFromEmbla();
       resetProgress();
-    });
+      startRaf();
+    };
 
+    updateFromEmbla();
     resetProgress();
     startRaf();
 
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onReInit);
+
     return () => {
       stopRaf();
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onReInit);
     };
-  }, [emblaApi, updateState, resetProgress, startRaf, stopRaf]);
+  }, [emblaApi, updateFromEmbla, resetProgress, startRaf, stopRaf]);
 
-  // Hover pauses progress raf too (autoplay plugin already stops on hover)
+  // Hover pauses progress raf too
   const onMouseEnter = () => stopRaf();
   const onMouseLeave = () => {
     resetProgress();
     startRaf();
   };
 
-  // Keyboard nav (left/right)
+  // Keyboard navigation
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
@@ -224,13 +236,10 @@ export default function Carousel({
                         : "linear-gradient(135deg, #1a0a10, #3b1e2a)",
                   }}
                 />
-
                 <div className="slideOverlay">
                   <div className="slideText">
                     <div className="slideTitle">{s.title ?? `Slide ${idx + 1}`}</div>
-                    <div className="slideSub">
-                      {s.subtitle ?? "Placeholder copy. Replace later."}
-                    </div>
+                    <div className="slideSub">{s.subtitle ?? "Placeholder copy. Replace later."}</div>
                   </div>
                 </div>
               </div>
@@ -246,20 +255,10 @@ export default function Carousel({
 
         {showArrows && snapCount > 1 && (
           <>
-            <button
-              className="navBtn left"
-              onClick={(e) => scrollPrev(e)}
-              disabled={!canPrev}
-              aria-label="Previous slide"
-            >
+            <button className="navBtn left" onClick={(e) => scrollPrev(e)} disabled={!canPrev} aria-label="Previous">
               ‹
             </button>
-            <button
-              className="navBtn right"
-              onClick={(e) => scrollNext(e)}
-              disabled={!canNext}
-              aria-label="Next slide"
-            >
+            <button className="navBtn right" onClick={(e) => scrollNext(e)} disabled={!canNext} aria-label="Next">
               ›
             </button>
           </>
