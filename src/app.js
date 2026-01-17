@@ -201,16 +201,30 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // load-in animation toggle
+    // Reveal elements only when they become visible (plays once, stays visible until reload)
     const body = document.body;
-    if (!prefersReduced()) {
-      requestAnimationFrame(() => {
-        body.classList.remove('preload');
-        body.classList.add('loaded');
-      });
+    body.classList.remove('no-js');
+
+    const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+
+    // Reduced motion: reveal everything immediately
+    if (prefersReduced()) {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    } else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -10% 0px' }
+      );
+      revealEls.forEach((el) => io.observe(el));
     } else {
-      body.classList.remove('preload');
-      body.classList.add('loaded');
+      // Very old browsers: just show everything
+      revealEls.forEach((el) => el.classList.add('is-visible'));
     }
 
     document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
