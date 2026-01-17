@@ -1,12 +1,150 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Mockup</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Mockup</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body class="preload">
+  <!-- Sticky header (brand + menu) -->
+  <header class="header" data-reveal style="--d: 0ms">
+    <div class="header-inner">
+      <div class="brand">BRAND</div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" data-reveal style="--d: 80ms">
+    <!-- Full-width hero carousel -->
+    <section id="home" class="section" data-reveal style="--d: 140ms">
+      <div class="carousel" data-autoplay="true" data-interval="4000" aria-label="Hero carousel">
+        <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
+        <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
+
+        <div class="carousel__viewport">
+          <div class="carousel__track">
+            <div class="carousel__slide">
+              <div class="slide-bg bg-1"></div>
+              <div class="slide-overlay">
+                <div class="slide-title">Hero slide 1</div>
+                <div class="slide-sub">Autoplay • swipe • arrows • dots</div>
+              </div>
+            </div>
+            <div class="carousel__slide">
+              <div class="slide-bg bg-2"></div>
+              <div class="slide-overlay">
+                <div class="slide-title">Hero slide 2</div>
+                <div class="slide-sub">Replace content later</div>
+              </div>
+            </div>
+            <div class="carousel__slide">
+              <div class="slide-bg bg-3"></div>
+              <div class="slide-overlay">
+                <div class="slide-title">Hero slide 3</div>
+                <div class="slide-sub">This is a functional mockup</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
+        <div class="carousel__dots" aria-label="Carousel pagination"></div>
+      </div>
+    </section>
+
+    <!-- 2x2 clickable mini carousels (boxes) -->
+    <section id="work" class="section" data-reveal style="--d: 220ms">
+      <div class="grid">
+        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
+          <div class="card-title">Clickable carousel 1</div>
+          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 1">
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
+            <div class="carousel__viewport">
+              <div class="carousel__track">
+                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
+              </div>
+            </div>
+            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
+            <div class="carousel__dots" aria-label="Carousel pagination"></div>
+          </div>
+          <div class="card-hint">Click opens a link (placeholder)</div>
+        </a>
+
+        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
+          <div class="card-title">Clickable carousel 2</div>
+          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 2">
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
+            <div class="carousel__viewport">
+              <div class="carousel__track">
+                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
+              </div>
+            </div>
+            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
+            <div class="carousel__dots" aria-label="Carousel pagination"></div>
+          </div>
+          <div class="card-hint">Click opens a link (placeholder)</div>
+        </a>
+
+        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
+          <div class="card-title">Clickable carousel 3</div>
+          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 3">
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
+            <div class="carousel__viewport">
+              <div class="carousel__track">
+                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
+              </div>
+            </div>
+            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
+            <div class="carousel__dots" aria-label="Carousel pagination"></div>
+          </div>
+          <div class="card-hint">Click opens a link (placeholder)</div>
+        </a>
+
+        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
+          <div class="card-title">Clickable carousel 4</div>
+          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 4">
+            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
+            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
+            <div class="carousel__viewport">
+              <div class="carousel__track">
+                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
+                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
+              </div>
+            </div>
+            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
+            <div class="carousel__dots" aria-label="Carousel pagination"></div>
+          </div>
+          <div class="card-hint">Click opens a link (placeholder)</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="contact" class="section" data-reveal style="--d: 260ms">
+      <h2 class="h2">Contacts</h2>
+      <div class="contact">
+        <div>Email: placeholder@domain.com</div>
+        <div>Phone: +370 000 00000</div>
+        <div>Instagram: @placeholder</div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/app.js"></script>
+</body>
 </html>
