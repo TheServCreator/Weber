@@ -118,6 +118,7 @@
     }
 
     _bind() {
+      this.justDragged = false;
       // Buttons
       if (this.prevBtn) {
         this.prevBtn.addEventListener('click', (e) => {
@@ -166,6 +167,7 @@
       };
 
       const onMove = (e) => {
+        if (Math.abs(this.currentX - this.startX) > 6) this.justDragged = true;
         if (!this.isDragging) return;
         this.currentX = (e.touches ? e.touches[0].clientX : e.clientX);
         const dx = this.currentX - this.startX;
@@ -200,19 +202,34 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // load-in animation toggle
-    const body = document.body;
-    if (!prefersReduced()) {
-      requestAnimationFrame(() => {
-        body.classList.remove('preload');
-        body.classList.add('loaded');
+document.addEventListener('DOMContentLoaded', () => {
+  // Reveal-on-visible (plays once per element until reload)
+  const revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
       });
-    } else {
-      body.classList.remove('preload');
-      body.classList.add('loaded');
-    }
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
 
-    document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
-  });
-})();
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // Init carousels
+  document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
+
+  // Demo signup submit
+  const form = document.getElementById('signupForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Užklausa išsiųsta (demo). Vėliau prijungsime tikrą siuntimą.');
+      form.reset();
+    });
+  }
+})});
