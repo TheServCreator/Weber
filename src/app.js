@@ -200,6 +200,153 @@
     }
   }
 
+  class PageRouter {
+    constructor() {
+      this.container = document.querySelector('.container');
+      this.handleRoute();
+      window.addEventListener('hashchange', () => this.handleRoute());
+    }
+
+    handleRoute() {
+      const hash = window.location.hash.slice(1) || '';
+
+      if (hash === 'contact') {
+        this.showSignupPage();
+      } else if (hash === 'teddy-birthdays') {
+        this.showTeddyPage();
+      } else if (hash === 'birthday-extras') {
+        this.showExtrasPage();
+      } else {
+        this.showHomePage();
+      }
+
+      // Re-initialize carousels
+      document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
+
+      // Trigger reveal animations
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    }
+
+    showHomePage() {
+      location.reload();
+    }
+
+    showSignupPage() {
+      this.container.innerHTML = `
+        <section class="section" data-reveal style="--d: 140ms">
+          <h2 class="h2">Gimtadienio Registracija</h2>
+          <form class="signup-form">
+            <div class="form-group">
+              <label for="name">Vardo</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">El. paštas</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefonas</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="date">Gimtadienio Data</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="guests">Svečių Skaičius</label>
+              <input type="number" id="guests" name="guests" min="1" required>
+            </div>
+            <div class="form-group">
+              <label for="party-type">Pageidaujama Šventės Tipas</label>
+              <select id="party-type" name="party-type">
+                <option value="bricks4kidz">Bricks4Kidz</option>
+                <option value="medical">Little Medical School</option>
+                <option value="teddy">Plūšinės Gyvūnų Šventė</option>
+                <option value="extras">Gimtadienio Papildai</option>
+              </select>
+            </div>
+            <button type="submit" class="submit-btn">Registruotis</button>
+          </form>
+        </section>
+      `;
+    }
+
+    showTeddyPage() {
+      this.container.innerHTML = `
+        <section class="section" data-reveal style="--d: 140ms">
+          <h2 class="h2">Plūšinės Gyvūnų Šventė</h2>
+          <p class="description">Pagal temą su jūsų mėgiamais plūšiniais žaisliukais! Kiekvienas svečias gali atnešti savo plūšinį draugą.</p>
+
+          <div class="features-grid">
+            <div class="feature-card feature-green">
+              <h3>Teminės Dekorācijos</h3>
+              <p>Plūšinių žaisliukų tema su spalvingomis dekoracijomis</p>
+            </div>
+            <div class="feature-card feature-blue">
+              <h3>Interaktyvūs Žaidimai</h3>
+              <p>Žaidimai su plūšiniais žaisliukais ir prašmatūs konkursai</p>
+            </div>
+            <div class="feature-card feature-red">
+              <h3>Šventingas Pyragas</h3>
+              <p>Specialiai pagamintas pyragas su plūšinio žaislo figūra</p>
+            </div>
+            <div class="feature-card feature-yellow">
+              <h3>Dovanos ir Liuks</h3>
+              <p>Kiekvienas svečias gauna specialią dovaną su šventės logotipu</p>
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <a href="/#contact" class="signup-btn">Užsiregistruoti Dabar</a>
+          </div>
+        </section>
+      `;
+    }
+
+    showExtrasPage() {
+      this.container.innerHTML = `
+        <section class="section" data-reveal style="--d: 140ms">
+          <h2 class="h2">Gimtadienio Papildai</h2>
+          <p class="description">Padarykite jūsų šventę dar geresnę su šiais nuostabiais papildais!</p>
+
+          <div class="extras-grid">
+            <div class="extra-item extra-blue">
+              <h3>🎈 Piñata</h3>
+              <p>Spalvinga piñata, pilna saldžių dovanų ir surprizų. Visada smagus!</p>
+            </div>
+            <div class="extra-item extra-red">
+              <h3>🎭 Animatorius</h3>
+              <p>Profesionalus animatorius, kuris vedė šventę ir žaidimų programą</p>
+            </div>
+            <div class="extra-item extra-green">
+              <h3>📸 Fotosesija</h3>
+              <p>Profesionali fotosesija su šiuolaikine nuotoliniu atsidarymu ir redakcija</p>
+            </div>
+            <div class="extra-item extra-yellow">
+              <h3>🎂 Dekoruotas Pyragas</h3>
+              <p>Specialiai pagamintas ir dekoruotas pyragas pagal tavo temą</p>
+            </div>
+            <div class="extra-item extra-blue">
+              <h3>🎁 Dovanu Paketai</h3>
+              <p>Specialiai paruošti dovanu paketai kiekvienam svečiui</p>
+            </div>
+            <div class="extra-item extra-red">
+              <h3>🎉 Balionu Dekors</h3>
+              <p>Nuostabūs balionu dekoracijy sustatymai ir figūros</p>
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <a href="/#contact" class="signup-btn">Pasirinkti Papildai</a>
+          </div>
+        </section>
+      `;
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     // load-in animation toggle
     const body = document.body;
@@ -213,6 +360,7 @@
       body.classList.add('loaded');
     }
 
-    document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
+    // Initialize router
+    new PageRouter();
   });
 })();

@@ -1,6 +1,7 @@
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fafafa;color:#111}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f5f5f5;color:#111}
+:root{--lego-blue:#0066cc;--lego-green:#00aa00;--lego-red:#dd0000;--lego-yellow:#ffcc00}
 
 /* Minimal load-in (won't break layout) */
 body.preload [data-reveal]{opacity:0;transform:translateY(10px)}
@@ -9,52 +10,119 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 5
   body.preload [data-reveal],body.loaded [data-reveal]{opacity:1;transform:none;transition:none}
 }
 
-.header{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08)}
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--lego-blue),#004a99);backdrop-filter:blur(10px);border-bottom:3px solid var(--lego-red);box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .header-inner{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{font-weight:900;letter-spacing:.3px}
+.brand{font-weight:900;letter-spacing:.3px;color:#fff;font-size:20px}
 .nav{display:flex;gap:12px}
-.nav a{text-decoration:none;color:#222;font-size:14px;padding:8px 10px;border-radius:999px}
-.nav a:hover{background:rgba(0,0,0,.06)}
+.nav a{text-decoration:none;color:#fff;font-size:14px;padding:8px 14px;border-radius:6px;font-weight:600;transition:all 200ms ease}
+.nav a:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
 
 .container{max-width:1100px;margin:0 auto;padding:22px 18px 60px}
 .section{margin-bottom:22px}
-.h2{margin:0 0 10px;font-size:22px}
+.h2{margin:0 0 16px;font-size:28px;font-weight:900;color:var(--lego-blue)}
 
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 @media (max-width:860px){.grid{grid-template-columns:1fr}}
 
-.card{display:block;text-decoration:none;color:inherit;padding:14px;border-radius:16px;border:1px solid rgba(0,0,0,.08);background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.card-title{font-weight:800;font-size:14px;margin-bottom:10px}
-.card-hint{margin-top:8px;font-size:12px;color:#444}
+.card{display:block;text-decoration:none;color:inherit;padding:14px;border-radius:16px;border:2px solid rgba(0,0,0,.08);background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all 300ms ease;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.15)}
+.card-title{font-weight:900;font-size:16px;margin-bottom:10px;color:#333}
+.card-hint{margin-top:8px;font-size:12px;color:#666;font-weight:500}
+.card-bricks4kidz{border-color:var(--lego-blue);box-shadow:0 10px 30px rgba(0,102,204,.12)}
+.card-bricks4kidz:hover{border-color:var(--lego-blue);box-shadow:0 16px 40px rgba(0,102,204,.20)}
+.card-medical{border-color:var(--lego-red);box-shadow:0 10px 30px rgba(221,0,0,.12)}
+.card-medical:hover{border-color:var(--lego-red);box-shadow:0 16px 40px rgba(221,0,0,.20)}
+.card-teddy{border-color:var(--lego-green);box-shadow:0 10px 30px rgba(0,170,0,.12)}
+.card-teddy:hover{border-color:var(--lego-green);box-shadow:0 16px 40px rgba(0,170,0,.20)}
+.card-extras{border-color:var(--lego-yellow);box-shadow:0 10px 30px rgba(255,204,0,.12)}
+.card-extras:hover{border-color:var(--lego-yellow);box-shadow:0 16px 40px rgba(255,204,0,.20)}
 
-.contact{padding:16px;border-radius:16px;border:1px solid rgba(0,0,0,.08);background:#fff;line-height:1.7}
+.contact-wrapper{margin-top:16px}
+.contact{padding:24px;border-radius:16px;border:2px solid var(--lego-blue);background:#fff;line-height:1.8;box-shadow:0 10px 30px rgba(0,102,204,.12)}
+.contact div{margin-bottom:12px;font-size:16px;font-weight:500}
+.signup-btn{display:inline-block;margin-top:16px;padding:14px 28px;background:linear-gradient(135deg,var(--lego-blue),#004a99);color:#fff;text-decoration:none;border-radius:8px;font-weight:900;font-size:14px;border:none;cursor:pointer;transition:all 300ms ease;box-shadow:0 4px 12px rgba(0,102,204,.30)}
+.signup-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,102,204,.40)}
 
 /* Carousel */
-.carousel{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.10);background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.10)}
-.carousel--card{border-radius:14px;box-shadow:none}
+.carousel{position:relative;border-radius:18px;overflow:hidden;border:2px solid rgba(0,0,0,.10);background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.10)}
+.carousel--card{border-radius:14px;box-shadow:none;border:2px solid rgba(0,0,0,.08)}
+.hero-section .carousel{border:3px solid var(--lego-blue);box-shadow:0 16px 40px rgba(0,102,204,.20)}
 
 .carousel__viewport{overflow:hidden}
 .carousel__track{display:flex;touch-action:pan-y}
 .carousel__slide{flex:0 0 100%;min-width:0;position:relative;height:520px}
 .carousel--card .carousel__slide{height:220px}
 
+.slide-img{width:100%;height:100%;object-fit:cover;display:block}
 .slide-bg{position:absolute;inset:0;transform:scale(1.03)}
-.bg-1{background:linear-gradient(135deg,#1f2937,#64748b)}
-.bg-2{background:linear-gradient(135deg,#0f172a,#22c55e)}
-.bg-3{background:linear-gradient(135deg,#111827,#a855f7)}
+.bg-1{background:linear-gradient(135deg,var(--lego-blue),#004a99)}
+.bg-2{background:linear-gradient(135deg,var(--lego-green),#008800)}
+.bg-3{background:linear-gradient(135deg,var(--lego-red),#bb0000)}
+.bg-extras-1{background:linear-gradient(135deg,var(--lego-blue),var(--lego-red))}
+.bg-extras-2{background:linear-gradient(135deg,var(--lego-green),var(--lego-yellow))}
+.bg-extras-3{background:linear-gradient(135deg,var(--lego-red),var(--lego-green))}
 
 .slide-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.10),rgba(0,0,0,0))}
 .slide-title{color:#fff;font-weight:900;font-size:22px}
 .slide-sub{color:rgba(255,255,255,.85);font-size:13px;margin-top:6px}
 
-.carousel__btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:rgba(0,0,0,.25);color:#fff;font-size:26px;line-height:1;display:grid;place-items:center;cursor:pointer;user-select:none}
-.carousel__btn:hover{background:rgba(0,0,0,.40)}
+.carousel__btn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:999px;border:2px solid rgba(255,255,255,.60);background:rgba(0,0,0,.35);color:#fff;font-size:28px;line-height:1;display:grid;place-items:center;cursor:pointer;user-select:none;font-weight:bold;transition:all 200ms ease}
+.carousel__btn:hover{background:rgba(0,0,0,.55);border-color:#fff;transform:translateY(-50%) scale(1.1)}
 .carousel__btn--prev{left:12px}
 .carousel__btn--next{right:12px}
 
-.carousel__dots{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px;padding:0 12px}
-.carousel__dots button{width:10px;height:10px;border-radius:999px;border:1px solid rgba(255,255,255,.65);background:transparent;cursor:pointer}
-.carousel__dots button.is-active{background:rgba(255,255,255,.95)}
+.carousel__dots{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px;padding:0 12px;z-index:10}
+.carousel__dots button{width:12px;height:12px;border-radius:999px;border:2px solid rgba(255,255,255,.70);background:transparent;cursor:pointer;transition:all 200ms ease}
+.carousel__dots button:hover{background:rgba(255,255,255,.50)}
+.carousel__dots button.is-active{background:#fff;border-color:#fff;width:14px;height:14px}
 
-.carousel__progress{position:absolute;left:12px;right:12px;bottom:10px;height:4px;border-radius:999px;background:rgba(255,255,255,.30);overflow:hidden}
-.carousel__bar{height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:rgba(255,255,255,.95)}
+.carousel__progress{position:absolute;left:12px;right:12px;bottom:10px;height:5px;border-radius:999px;background:rgba(255,255,255,.25);overflow:hidden;z-index:5}
+.carousel__bar{height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--lego-blue),var(--lego-red))}
+
+/* Signup Form */
+.signup-form{background:#fff;padding:24px;border-radius:16px;border:2px solid var(--lego-blue);box-shadow:0 10px 30px rgba(0,102,204,.12);max-width:500px}
+.form-group{margin-bottom:20px;display:flex;flex-direction:column}
+.form-group label{font-weight:700;margin-bottom:8px;color:#333;font-size:14px}
+.form-group input,.form-group select{padding:12px;border:2px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;transition:all 200ms ease}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--lego-blue);box-shadow:0 0 0 3px rgba(0,102,204,.10)}
+.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--lego-blue),#004a99);color:#fff;border:none;border-radius:8px;font-weight:900;font-size:16px;cursor:pointer;transition:all 300ms ease;box-shadow:0 4px 12px rgba(0,102,204,.30)}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,102,204,.40)}
+
+/* Page Description */
+.description{font-size:16px;color:#555;margin-bottom:24px;line-height:1.6}
+
+/* Features Grid */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:32px}
+@media (max-width:860px){.features-grid{grid-template-columns:1fr}}
+
+.feature-card{padding:20px;border-radius:12px;color:#fff;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.feature-card h3{margin:0 0 10px;font-size:18px}
+.feature-card p{margin:0;font-size:14px;line-height:1.5;font-weight:400}
+.feature-green{background:linear-gradient(135deg,var(--lego-green),#008800)}
+.feature-blue{background:linear-gradient(135deg,var(--lego-blue),#004a99)}
+.feature-red{background:linear-gradient(135deg,var(--lego-red),#bb0000)}
+.feature-yellow{background:linear-gradient(135deg,var(--lego-yellow),#ddaa00)}
+
+/* Extras Grid */
+.extras-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:32px}
+@media (max-width:860px){.extras-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.extras-grid{grid-template-columns:1fr}}
+
+.extra-item{padding:20px;border-radius:12px;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.15);transition:all 300ms ease}
+.extra-item:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.20)}
+.extra-item h3{margin:0 0 12px;font-size:20px;font-weight:900}
+.extra-item p{margin:0;font-size:14px;line-height:1.6;font-weight:400}
+.extra-blue{background:linear-gradient(135deg,var(--lego-blue),#004a99)}
+.extra-red{background:linear-gradient(135deg,var(--lego-red),#bb0000)}
+.extra-green{background:linear-gradient(135deg,var(--lego-green),#008800)}
+.extra-yellow{background:linear-gradient(135deg,var(--lego-yellow),#ddaa00)}
+
+/* CTA Section */
+.cta-section{text-align:center;padding:24px;background:rgba(0,102,204,.05);border-radius:12px;border:2px solid var(--lego-blue)}
+
+/* Media queries */
+@media (max-width:600px){
+  .card{padding:12px}
+  .carousel__slide{height:380px}
+  .carousel--card .carousel__slide{height:180px}
+}
