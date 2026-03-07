@@ -203,8 +203,9 @@
   class PageRouter {
     constructor() {
       this.container = document.querySelector('.container');
-      this.handleRoute();
+      this.originalContent = this.container.innerHTML;
       window.addEventListener('hashchange', () => this.handleRoute());
+      this.handleRoute();
     }
 
     handleRoute() {
@@ -221,17 +222,19 @@
       }
 
       // Re-initialize carousels
-      document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
+      setTimeout(() => {
+        document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
 
-      // Trigger reveal animations
-      document.querySelectorAll('[data-reveal]').forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      });
+        // Trigger reveal animations
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }, 0);
     }
 
     showHomePage() {
-      location.reload();
+      this.container.innerHTML = this.originalContent;
     }
 
     showSignupPage() {
