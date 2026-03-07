@@ -50,10 +50,10 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 5
 
 .carousel__viewport{overflow:hidden;width:100%;height:100%}
 .carousel__track{display:flex;touch-action:pan-y;width:100%;height:100%;will-change:transform}
-.carousel__slide{flex:0 0 100%;min-width:0;position:relative;height:520px;width:100%;background:#fff;display:flex;align-items:center;justify-content:center}
+.carousel__slide{flex:0 0 100%;min-width:0;position:relative;height:520px;width:100%;background:#fff;display:grid;place-items:center}
 .carousel--card .carousel__slide{height:220px}
 
-.slide-img{width:100%;height:100%;object-fit:contain;display:block;background:#fff}
+.slide-img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;position:relative}
 .carousel__slide--link{text-decoration:none;color:inherit;cursor:pointer}
 
 .slide-bg{position:absolute;inset:0;transform:scale(1.03)}
@@ -64,9 +64,9 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 5
 .bg-extras-2{background:linear-gradient(135deg,var(--lego-green),var(--lego-yellow))}
 .bg-extras-3{background:linear-gradient(135deg,var(--lego-red),var(--lego-green))}
 
-.slide-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.10),rgba(0,0,0,0))}
-.slide-title{color:#fff;font-weight:900;font-size:22px}
-.slide-sub{color:rgba(255,255,255,.85);font-size:13px;margin-top:6px}
+.slide-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:18px;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.10),rgba(0,0,0,0));z-index:2;width:100%;height:100%;box-sizing:border-box}
+.slide-title{color:#fff;font-weight:900;font-size:22px;margin:0}
+.slide-sub{color:rgba(255,255,255,.85);font-size:13px;margin:6px 0 0 0}
 
 .carousel__btn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:999px;border:2px solid rgba(255,255,255,.60);background:rgba(0,0,0,.35);color:#fff;font-size:28px;line-height:1;display:grid;place-items:center;cursor:pointer;user-select:none;font-weight:bold;transition:all 200ms ease}
 .carousel__btn:hover{background:rgba(0,0,0,.55);border-color:#fff;transform:translateY(-50%) scale(1.1)}
@@ -82,13 +82,18 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 5
 .carousel__bar{height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--lego-blue),var(--lego-red))}
 
 /* Signup Form */
-.signup-form{background:#fff;padding:24px;border-radius:16px;border:2px solid var(--lego-blue);box-shadow:0 10px 30px rgba(0,102,204,.12);max-width:500px}
+.signup-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:24px}
+@media (max-width:960px){.signup-wrapper{grid-template-columns:1fr}}
+
+.signup-form{background:#fff;padding:24px;border-radius:16px;border:2px solid var(--lego-blue);box-shadow:0 10px 30px rgba(0,102,204,.12)}
 .form-group{margin-bottom:20px;display:flex;flex-direction:column}
 .form-group label{font-weight:700;margin-bottom:8px;color:#333;font-size:14px}
 .form-group input,.form-group select{padding:12px;border:2px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;transition:all 200ms ease}
 .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--lego-blue);box-shadow:0 0 0 3px rgba(0,102,204,.10)}
 .submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--lego-blue),#004a99);color:#fff;border:none;border-radius:8px;font-weight:900;font-size:16px;cursor:pointer;transition:all 300ms ease;box-shadow:0 4px 12px rgba(0,102,204,.30)}
 .submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,102,204,.40)}
+
+.signup-image{width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,102,204,.12);border:2px solid var(--lego-blue);object-fit:contain}
 
 /* Page Description */
 .description{font-size:16px;color:#555;margin-bottom:24px;line-height:1.6}

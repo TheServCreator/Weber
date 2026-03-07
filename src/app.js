@@ -241,48 +241,51 @@
       this.container.innerHTML = `
         <section class="section" data-reveal style="--d: 140ms">
           <h2 class="h2">Gimtadienio Registracija</h2>
-          <form class="signup-form">
-            <div class="form-group">
-              <label for="name">Vardo</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">El. paštas</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefonas</label>
-              <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-              <label for="city">Miestas</label>
-              <select id="city" name="city" required>
-                <option value="">Pasirinkite miestą</option>
-                <option value="vilnius">Vilnius</option>
-                <option value="kaunas">Kaunas</option>
-                <option value="klaipeda">Klaipėda</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="date">Gimtadienio Data</label>
-              <input type="date" id="date" name="date" required>
-            </div>
-            <div class="form-group">
-              <label for="guests">Svečių Skaičius</label>
-              <input type="number" id="guests" name="guests" min="1" required>
-            </div>
-            <div class="form-group">
-              <label for="party-type">Pageidaujama Šventės Tipas</label>
-              <select id="party-type" name="party-type" required>
-                <option value="">Pasirinkite šventės tipą</option>
-                <option value="bricks4kidz">Bricks4Kidz</option>
-                <option value="medical">Little Medical School</option>
-                <option value="teddy">Plūšinės Gyvūnų Šventė</option>
-                <option value="extras">Gimtadienio Papildai</option>
-              </select>
-            </div>
-            <button type="submit" class="submit-btn">Registruotis</button>
-          </form>
+          <div class="signup-wrapper">
+            <form class="signup-form">
+              <div class="form-group">
+                <label for="name">Vardo</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">El. paštas</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefonas</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="city">Miestas</label>
+                <select id="city" name="city" required>
+                  <option value="">Pasirinkite miestą</option>
+                  <option value="vilnius">Vilnius</option>
+                  <option value="kaunas">Kaunas</option>
+                  <option value="klaipeda">Klaipėda</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">Gimtadienio Data</label>
+                <input type="date" id="date" name="date" required>
+              </div>
+              <div class="form-group">
+                <label for="guests">Svečių Skaičius</label>
+                <input type="number" id="guests" name="guests" min="1" required>
+              </div>
+              <div class="form-group">
+                <label for="party-type">Pageidaujama Šventės Tipas</label>
+                <select id="party-type" name="party-type" required>
+                  <option value="">Pasirinkite šventės tipą</option>
+                  <option value="bricks4kidz">Bricks4Kidz</option>
+                  <option value="medical">Little Medical School</option>
+                  <option value="teddy">Plūšinės Gyvūnų Šventė</option>
+                  <option value="extras">Gimtadienio Papildai</option>
+                </select>
+              </div>
+              <button type="submit" class="submit-btn">Registruotis</button>
+            </form>
+            <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F981c188440564f9ca66e89daf788983d?format=webp&width=800&height=1200" alt="Birthday party" class="signup-image">
+          </div>
         </section>
       `;
     }
