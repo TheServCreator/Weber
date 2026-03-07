@@ -221,14 +221,20 @@
         this.showHomePage();
       }
 
-      // Re-initialize carousels
+      // Re-initialize carousels and animations
       setTimeout(() => {
         document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
 
-        // Trigger reveal animations
+        // Trigger reveal animations with fade-in
         document.querySelectorAll('[data-reveal]').forEach((el) => {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(10px)';
+          el.style.transition = 'opacity 800ms cubic-bezier(0.4, 0, 0.2, 1), transform 800ms cubic-bezier(0.4, 0, 0.2, 1)';
+
+          requestAnimationFrame(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
         });
       }, 0);
     }
