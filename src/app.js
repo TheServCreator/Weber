@@ -255,6 +255,15 @@
               <input type="tel" id="phone" name="phone">
             </div>
             <div class="form-group">
+              <label for="city">Miestas</label>
+              <select id="city" name="city" required>
+                <option value="">Pasirinkite miestą</option>
+                <option value="vilnius">Vilnius</option>
+                <option value="kaunas">Kaunas</option>
+                <option value="klaipeda">Klaipėda</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="date">Gimtadienio Data</label>
               <input type="date" id="date" name="date" required>
             </div>
@@ -264,7 +273,8 @@
             </div>
             <div class="form-group">
               <label for="party-type">Pageidaujama Šventės Tipas</label>
-              <select id="party-type" name="party-type">
+              <select id="party-type" name="party-type" required>
+                <option value="">Pasirinkite šventės tipą</option>
                 <option value="bricks4kidz">Bricks4Kidz</option>
                 <option value="medical">Little Medical School</option>
                 <option value="teddy">Plūšinės Gyvūnų Šventė</option>
