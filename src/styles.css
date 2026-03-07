@@ -50,10 +50,10 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 5
 
 .carousel__viewport{overflow:hidden;width:100%;height:100%}
 .carousel__track{display:flex;touch-action:pan-y;width:100%;height:100%;will-change:transform}
-.carousel__slide{flex:0 0 100%;min-width:0;position:relative;height:520px;width:100%;background:#fff;display:flex;align-items:center;justify-content:center;padding:20px}
+.carousel__slide{flex:0 0 100%;min-width:0;position:relative;height:520px;width:100%;background:#fff;display:flex;align-items:center;justify-content:center;padding:0}
 .carousel--card .carousel__slide{height:220px}
 
-.slide-img{max-width:100%;max-height:100%;object-fit:contain;display:block;background:#fff}
+.slide-img{max-width:90%;max-height:90%;object-fit:contain;display:block;background:#fff;flex-shrink:0}
 .carousel__slide--link{text-decoration:none;color:inherit;cursor:pointer}
 
 .slide-bg{position:absolute;inset:0;transform:scale(1.03)}
