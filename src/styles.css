@@ -24,7 +24,7 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 8
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 @media (max-width:860px){.grid{grid-template-columns:1fr}}
 
-.card{display:block;text-decoration:none;color:inherit;padding:14px;border-radius:16px;border:2px solid rgba(0,0,0,.08);background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all 300ms ease;position:relative}
+.card{display:block;text-decoration:none;color:inherit;padding:14px;border-radius:16px;border:2px solid rgba(0,0,0,.08);background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all 300ms ease;position:relative;overflow:hidden}
 .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.15)}
 .card-title{font-weight:900;font-size:16px;margin-bottom:10px;color:#333}
 .card-hint{margin-top:8px;font-size:12px;color:#666;font-weight:500}
@@ -45,7 +45,7 @@ body.loaded [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 8
 
 /* Carousel */
 .carousel{position:relative;border-radius:18px;overflow:hidden;border:2px solid rgba(0,0,0,.10);background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.10)}
-.carousel--card{border-radius:14px;box-shadow:none;border:2px solid rgba(0,0,0,.08)}
+.carousel--card{border-radius:12px;box-shadow:none;border:none;margin:0;padding:0}
 .hero-section .carousel{border:3px solid var(--lego-blue);box-shadow:0 16px 40px rgba(0,102,204,.20)}
 
 .carousel__viewport{overflow:hidden;width:100%;height:100%}
