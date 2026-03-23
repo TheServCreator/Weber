@@ -402,3 +402,9 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   .carousel--card .carousel__slide{height:180px}
   .hero-section .carousel__slide{height:320px}
 }
+
+@supports(padding: max(0px)){
+  .slide-overlay{
+    padding-bottom: max(18px, calc(18px + env(safe-area-inset-bottom)));
+  }
+}
