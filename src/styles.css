@@ -403,8 +403,35 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   .hero-section .carousel__slide{height:320px}
 }
 
-@supports(padding: max(0px)){
-  .slide-overlay{
-    padding-bottom: max(18px, calc(18px + env(safe-area-inset-bottom)));
-  }
+.hero-section .carousel__btn--prev{
+  left: calc(14px + env(safe-area-inset-left));
 }
+
+.hero-section .carousel__btn--next{
+  right: calc(14px + env(safe-area-inset-right));
+}
+.hero-section{
+  width:100%;
+  margin-left:0;
+}
+.hero-section{
+  width:100%;
+  max-width:100vw;
+  overflow:hidden;
+}
+.carousel__slide{
+  position: relative;
+  transform: translateZ(0);
+}
+.slide-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  /* 🔥 fix iOS flicker/disappearing */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
