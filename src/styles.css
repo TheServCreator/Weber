@@ -401,37 +401,38 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   .card{padding:12px 12px 10px}
   .carousel--card .carousel__slide{height:180px}
   .hero-section .carousel__slide{height:320px}
+
+  /* Mobile hero carousel button fixes - move buttons further from text area */
+  .hero-section .carousel__btn{top:50%;z-index:30;width:36px;height:36px;font-size:20px}
+  .hero-section .carousel__btn--prev{left:4px}
+  .hero-section .carousel__btn--next{right:4px}
+  .hero-section .slide-overlay{z-index:25;padding:clamp(16px,3vw,40px) clamp(50px,6vw,70px)}
+  .hero-section .slide-title{font-size:clamp(28px,4.5vw,54px)}
+  .hero-section .slide-sub{font-size:clamp(13px,1.6vw,20px)}
+  /* Fix carousel dots positioning to not hide text and give them their own space */
+  .hero-section .carousel__dots{bottom:10px;z-index:15}
+  .hero-section .carousel__progress{bottom:10px;left:20px;right:20px}
+
+  /* Mobile card carousel button fixes - make buttons more transparent and adjust positioning */
+  .carousel__btn{width:24px;height:24px;font-size:14px;border-width:1px;background:rgba(0,0,0,.3)}
+  .carousel__btn--prev{left:-12px}
+  .carousel__btn--next{right:-12px}
+  .carousel__btn:hover{background:rgba(0,0,0,.5)}
+  .slide-overlay{z-index:30;padding:16px 20px}
+  .slide-title{font-size:18px}
+  .slide-sub{font-size:10px}
+
+  /* Mobile banner fixes - remove photo and center text vertically */
+  .lego-banner{height:clamp(55px,9vw,75px);padding:8px 4%;flex-direction:column;text-align:center;gap:2px;justify-content:center}
+  .lego-banner-img{display:none} /* Hide all images on mobile */
+  .lego-banner-text{font-size:clamp(14px,4vw,24px);padding:0;order:1;line-height:1.1}
+  .lego-banner-sub{font-size:clamp(9px,1.5vw,12px);margin-top:2px;order:2}
 }
 
-.hero-section .carousel__btn--prev{
-  left: calc(14px + env(safe-area-inset-left));
+/* Extra small mobile fixes */
+@media(max-width:480px){
+  .lego-banner{height:65px;padding:10px 5%;gap:2px}
+  .lego-banner-text{font-size:16px;padding:0}
+  .lego-banner-sub{font-size:11px}
+  .lego-banner-img{display:none}
 }
-
-.hero-section .carousel__btn--next{
-  right: calc(14px + env(safe-area-inset-right));
-}
-.hero-section{
-  width:100%;
-  margin-left:0;
-}
-.hero-section{
-  width:100%;
-  max-width:100vw;
-  overflow:hidden;
-}
-.carousel__slide{
-  position: relative;
-  transform: translateZ(0);
-}
-.slide-overlay{
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-
-  /* 🔥 fix iOS flicker/disappearing */
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
