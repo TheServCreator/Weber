@@ -1,148 +1,202 @@
 <!doctype html>
-<html lang="en">
+<html lang="lt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Mockup</title>
+  <title>Gimtadieniai – Bricks4Kidz &amp; Little Medical School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!--
+    Nunito covers Lithuanian diacritics (ą č ę ė į š ų ū ž).
+    Google Fonts serves the latin-ext subset automatically when
+    the browser requests those code points.
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body class="preload">
-  <!-- Sticky header (brand + menu) -->
-  <header class="header" data-reveal style="--d: 0ms">
+
+  <!-- Floating background bubbles -->
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+  <div class="bg-circle bg-circle-3"></div>
+  <div class="bg-circle bg-circle-4"></div>
+  <div class="bg-circle bg-circle-5"></div>
+
+  <header class="header" data-reveal style="--d:0ms">
     <div class="header-inner">
-      <div class="brand">BRAND</div>
+      <div class="brand">🎂 Gimtadieniai</div>
       <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
+        <a href="/">Pradžia</a>
+        <a href="/#contact">Registruotis</a>
       </nav>
     </div>
   </header>
 
-  <main class="container" data-reveal style="--d: 80ms">
-    <!-- Full-width hero carousel -->
-    <section id="home" class="section" data-reveal style="--d: 140ms">
-      <div class="carousel" data-autoplay="true" data-interval="4000" aria-label="Hero carousel">
-        <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
-        <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
+  <!--
+    LEGO BRICK STRIP — 7 coloured bricks with CSS studs.
+    Each .lego-strip-brick has ::before (studs) and ::after (brick face).
+  -->
+  <div class="lego-strip" aria-hidden="true">
+    <div class="lego-strip-brick lsb-1"></div>
+    <div class="lego-strip-brick lsb-2"></div>
+    <div class="lego-strip-brick lsb-3"></div>
+    <div class="lego-strip-brick lsb-4"></div>
+    <div class="lego-strip-brick lsb-5"></div>
+    <div class="lego-strip-brick lsb-6"></div>
+    <div class="lego-strip-brick lsb-7"></div>
+  </div>
 
+  <main class="container" data-reveal style="--d:80ms">
+
+    <!-- HERO full width -->
+    <section class="hero-section" data-reveal style="--d:100ms">
+      <div class="carousel" data-autoplay="true" data-interval="4000" aria-label="Hero carousel">
+        <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+        <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
         <div class="carousel__viewport">
           <div class="carousel__track">
-            <div class="carousel__slide">
-              <div class="slide-bg bg-1"></div>
-              <div class="slide-overlay">
-                <div class="slide-title">Hero slide 1</div>
-                <div class="slide-sub">Autoplay • swipe • arrows • dots</div>
-              </div>
-            </div>
-            <div class="carousel__slide">
-              <div class="slide-bg bg-2"></div>
-              <div class="slide-overlay">
-                <div class="slide-title">Hero slide 2</div>
-                <div class="slide-sub">Replace content later</div>
-              </div>
-            </div>
-            <div class="carousel__slide">
-              <div class="slide-bg bg-3"></div>
-              <div class="slide-overlay">
-                <div class="slide-title">Hero slide 3</div>
-                <div class="slide-sub">This is a functional mockup</div>
-              </div>
-            </div>
+            <a href="https://www.bricks4kidz.lt/gimtadienio-sventes/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=1600" alt="Bricks4Kidz LEGO party" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Bricks4Kidz 🧱</div><div class="slide-sub">Kūrybinga LEGO šventė vaikams</div></div>
+            </a>
+            <a href="https://littlemedicalschool.com/lithuania/parties/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=1600" alt="Little Medical School party" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Little Medical School 🩺</div><div class="slide-sub">Medicininė edukacija ir pramoga</div></div>
+            </a>
+            <a href="https://www.bricks4kidz.lt/gimtadienio-sventes/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=1600" alt="Bricks4Kidz workshop" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Bricks4Kidz 🚀</div><div class="slide-sub">Nepamiršami LEGO momentai</div></div>
+            </a>
+            <a href="https://littlemedicalschool.com/lithuania/parties/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=1600" alt="Medical roleplay party" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Little Medical School 💊</div><div class="slide-sub">Smagi medicininė šventė</div></div>
+            </a>
           </div>
         </div>
-
         <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
         <div class="carousel__dots" aria-label="Carousel pagination"></div>
       </div>
     </section>
 
-    <!-- 2x2 clickable mini carousels (boxes) -->
-    <section id="work" class="section" data-reveal style="--d: 220ms">
-      <div class="grid">
-        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
-          <div class="card-title">Clickable carousel 1</div>
-          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 1">
-            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
-            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
-            <div class="carousel__viewport">
-              <div class="carousel__track">
-                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
-              </div>
-            </div>
-            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
-            <div class="carousel__dots" aria-label="Carousel pagination"></div>
-          </div>
-          <div class="card-hint">Click opens a link (placeholder)</div>
-        </a>
+    <!-- LEGO CHARACTER BANNER -->
+    <div class="lego-banner" data-reveal style="--d:160ms">
+      <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=600" alt="LEGO characters" class="lego-banner-img" onerror="this.style.display='none'">
+      <div class="lego-banner-text">
+        Net 25 gimtadienio temos! 🎉
+        <span class="lego-banner-sub">Pasirink savo mėgstamiausią ir sukurk nepamirštamą šventę</span>
+      </div>
+      <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=400" alt="Kids celebrating" class="lego-banner-img" onerror="this.style.display='none'">
+    </div>
 
-        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
-          <div class="card-title">Clickable carousel 2</div>
-          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 2">
-            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
-            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
-            <div class="carousel__viewport">
-              <div class="carousel__track">
-                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
-              </div>
-            </div>
-            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
-            <div class="carousel__dots" aria-label="Carousel pagination"></div>
-          </div>
-          <div class="card-hint">Click opens a link (placeholder)</div>
-        </a>
+    <!-- PARTY OPTIONS -->
+    <section class="parties-section" data-reveal style="--d:220ms">
+      <div class="inner-wrap">
+        <h2 class="h2">Gimtadienio Parinktys 🎉</h2>
 
-        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
-          <div class="card-title">Clickable carousel 3</div>
-          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 3">
-            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
-            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
-            <div class="carousel__viewport">
-              <div class="carousel__track">
-                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
-              </div>
-            </div>
-            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
-            <div class="carousel__dots" aria-label="Carousel pagination"></div>
-          </div>
-          <div class="card-hint">Click opens a link (placeholder)</div>
-        </a>
+        <!-- Top row: 3 cards -->
+        <div class="grid-top">
 
-        <a class="card" href="https://example.com" target="_blank" rel="noreferrer">
-          <div class="card-title">Clickable carousel 4</div>
-          <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Card carousel 4">
-            <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">‹</button>
-            <button class="carousel__btn carousel__btn--next" aria-label="Next slide">›</button>
-            <div class="carousel__viewport">
-              <div class="carousel__track">
-                <div class="carousel__slide"><div class="slide-bg bg-2"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-1"></div></div>
-                <div class="carousel__slide"><div class="slide-bg bg-3"></div></div>
+          <a class="card card-bricks4kidz" href="https://www.bricks4kidz.lt/gimtadienio-sventes/" target="_blank" rel="noreferrer">
+            <div class="card-title">🧱 Bricks4Kidz</div>
+            <div class="card-carousel-wrap">
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Bricks4Kidz carousel">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+                <div class="carousel__viewport">
+                  <div class="carousel__track">
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=800" alt="Lego building" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=800" alt="Building workshop" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=800" alt="Lego creation" class="slide-img"></div>
+                  </div>
+                </div>
+                <div class="carousel__dots" aria-label="Carousel pagination"></div>
               </div>
             </div>
-            <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
-            <div class="carousel__dots" aria-label="Carousel pagination"></div>
-          </div>
-          <div class="card-hint">Click opens a link (placeholder)</div>
-        </a>
+            <div class="card-hint">Kūrybinga LEGO šventė</div>
+          </a>
+
+          <a class="card card-medical" href="https://littlemedicalschool.com/lithuania/parties/" target="_blank" rel="noreferrer">
+            <div class="card-title">🩺 Little Medical School</div>
+            <div class="card-carousel-wrap">
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="3500" aria-label="Medical school carousel">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+                <div class="carousel__viewport">
+                  <div class="carousel__track">
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800" alt="Medical roleplay" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=800" alt="Doctor training" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800" alt="Medical game" class="slide-img"></div>
+                  </div>
+                </div>
+                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+              </div>
+            </div>
+            <div class="card-hint">Medicininė edukacija ir pramoga</div>
+          </a>
+
+          <a class="card card-teddy" href="/#teddy-birthdays">
+            <div class="card-title">🧸 Pliušinių Gyvūnų Šventė</div>
+            <div class="card-carousel-wrap">
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="3200" aria-label="Teddy bears carousel">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+                <div class="carousel__viewport">
+                  <div class="carousel__track">
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fb1c4d2db544a48c6a3d2e75974aa9b70?format=webp&width=800" alt="Teddy bear doctor" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa9fb08ffa873450893193bd4b7ff5587?format=webp&width=800" alt="Teddy bear birthday" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F00aafa617b7347d6bea8c096685b6c07?format=webp&width=800" alt="Teddy bear party" class="slide-img"></div>
+                  </div>
+                </div>
+                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+              </div>
+            </div>
+            <div class="card-hint">Pagal temą su plūšinių žaisliukų</div>
+          </a>
+        </div>
+
+        <!-- Bottom row: Extras centered -->
+        <div class="grid-bottom">
+          <a class="card card-extras" href="/#birthday-extras">
+            <div class="card-title">🎈 Gimtadienio Papildai</div>
+            <div class="card-carousel-wrap">
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="2800" aria-label="Birthday extras carousel">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+                <div class="carousel__viewport">
+                  <div class="carousel__track">
+                    <div class="carousel__slide"><div class="slide-bg bg-extras-1"></div><div class="extras-slide-content"><div class="extras-slide-icon">🎭</div><div class="extras-slide-label">Animatoriai</div></div></div>
+                    <div class="carousel__slide"><div class="slide-bg bg-extras-2"></div><div class="extras-slide-content"><div class="extras-slide-icon">🪅</div><div class="extras-slide-label">Piñata</div></div></div>
+                    <div class="carousel__slide"><div class="slide-bg bg-extras-3"></div><div class="extras-slide-content"><div class="extras-slide-icon">📸</div><div class="extras-slide-label">Fotosesija</div></div></div>
+                  </div>
+                </div>
+                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+              </div>
+            </div>
+            <div class="card-hint">Piñata, animatoriai, ir daugiau</div>
+          </a>
+        </div>
+
       </div>
     </section>
 
-    <!-- Contacts -->
-    <section id="contact" class="section" data-reveal style="--d: 260ms">
-      <h2 class="h2">Contacts</h2>
-      <div class="contact">
-        <div>Email: placeholder@domain.com</div>
-        <div>Phone: +370 000 00000</div>
-        <div>Instagram: @placeholder</div>
+    <!-- Contact -->
+    <section id="contact" class="section inner-wrap" data-reveal style="--d:280ms">
+      <h2 class="h2">Susisiekite su Mumis 📞</h2>
+      <div class="contact-wrapper">
+        <div class="contact">
+          <div>📧 El. paštas: info@gimtadieniai.com</div>
+          <div>📱 Telefonas: +370 000 00000</div>
+          <div>📸 Instagram: @gimtadieniai</div>
+          <a href="/#contact" class="reg-btn">
+            <span class="btn-icon-tr">🩺</span>
+            🎉 Registruotis Šventei
+            <span class="btn-icon-bl">🧸</span>
+          </a>
+        </div>
       </div>
     </section>
+
   </main>
 
   <script type="module" src="/src/app.js"></script>
