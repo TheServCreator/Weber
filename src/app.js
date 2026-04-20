@@ -458,7 +458,7 @@
         <section class="section inner-wrap" data-reveal style="--d: 140ms">
           <h2 class="h2" style="margin:0;color: #E8181A;">Šventės Priedai ir Pramogos</h2>
 
-          <div style="margin: 0 20px 0;">
+          <div style="margin: 20px 0 0;">
             <a href="/" class="reg-btn" style="display: inline-flex; width: auto; margin-top: 0;">
                 ← Grįžti į pradžią
             </a>
