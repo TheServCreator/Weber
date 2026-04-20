@@ -33,7 +33,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 }
 
 /* Centre: ALL-CAPS pulsating tagline */
-.header-tagline{text-align:center}
+.header-tagline{flex: 1; text-align:center}
 .header-tagline-text{
   font-family:'Poppins',sans-serif;font-weight:800;color:#fff;
   font-size:clamp(13px,2vw,26px);
