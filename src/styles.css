@@ -63,48 +63,6 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   .header-phone{display:none}
 }
 
-/* ─────────────────────────────────────────────────────
-   LEGO BRICK STRIP — 4 equal color blocks only
-───────────────────────────────────────────────────── */
-.lego-strip{
-  width:100%;height:60px;display:flex;position:relative;z-index:1;overflow:visible;
-}
-.lego-strip-brick{
-  flex:1;position:relative;height:60px;
-  opacity:0;transform:scaleX(0);transform-origin:left center;
-  animation:brickReveal 500ms cubic-bezier(.4,0,.2,1) forwards;
-}
-.lsb-1{animation-delay:60ms}
-.lsb-2{animation-delay:180ms}
-.lsb-3{animation-delay:300ms}
-.lsb-4{animation-delay:420ms}
-.lsb-5{animation-delay:540ms}
-.lsb-6{animation-delay:660ms}
-.lsb-7{animation-delay:780ms}
-@keyframes brickReveal{
-  0%{opacity:0;transform:scaleX(0)}60%{opacity:1;transform:scaleX(1.04)}100%{opacity:1;transform:scaleX(1)}
-}
-@media(prefers-reduced-motion:reduce){.lego-strip-brick{opacity:1;transform:none;animation:none}}
-
-.lego-strip-brick::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:44px;background:inherit;
-  box-shadow:inset 0 3px 0 rgba(255,255,255,.20),inset 0 -3px 0 rgba(0,0,0,.18);
-}
-.lego-strip-brick::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:16px;background:inherit;
-  mask-image:repeating-linear-gradient(90deg,transparent 0px,transparent 3px,black 3px,black 18px,transparent 18px,transparent 24px);
-  -webkit-mask-image:repeating-linear-gradient(90deg,transparent 0px,transparent 3px,black 3px,black 18px,transparent 18px,transparent 24px);
-  border-radius:4px 4px 0 0;filter:brightness(1.18);box-shadow:0 -2px 0 rgba(0,0,0,.20);
-}
-
-/* 7 bricks cycling 4 main colors evenly */
-.lsb-1{background:var(--b4k-blue)}
-.lsb-2{background:var(--b4k-yellow)}
-.lsb-3{background:var(--b4k-red)}
-.lsb-4{background:var(--b4k-green)}
-.lsb-5{background:var(--b4k-blue)}
-.lsb-6{background:var(--b4k-yellow)}
-.lsb-7{background:var(--b4k-red)}
 
 /* ── LAYOUT ── */
 .container{position:relative;z-index:1;padding-bottom:60px;background:#fff}
@@ -250,7 +208,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 /* ── BRANDS FOOTER (4 cols) ── */
 .brands-section{
   padding:32px 0 48px;
-  border-top:4px solid var(--b4k-green);
+  border-top:4px solid var(--b4k-blue);
   margin-top:20px;
   background:#f8fdf9;
 }

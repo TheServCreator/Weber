@@ -466,7 +466,7 @@
           <div class="extras-grid-new">
             <div class="extra-card">
               <div class="extra-card-top extra-bg-1">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&auto=format" alt="Pinata" class="extra-card-img">
+                <img src="https://69e65bf0643d4ec18925cb13.imgix.net/lucid-origin_Include_no_text_this_will_be_used_for_a_business_in_the_Pinata_category_Pinata_p-0.jpg" alt="Pinata" class="extra-card-img">
                 <h3 class="extra-card-name">Pinata</h3>
               </div>
               <div class="extra-card-body">Spalvinga pinata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems šventės dalyviams!</div>
