@@ -373,7 +373,7 @@
             <div class="teddy-cards-grid" data-reveal style="--d:140ms">
               <div class="teddy-card">
                 <div class="teddy-card-icon teddy-card-icon-1">
-                  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=60&h=60&fit=crop&auto=format" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover">
+                  <img src="https://69e65bf0643d4ec18925cb13.imgix.net/teddy.png" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover">
                 </div>
                 <h3>Teminės Dekoracijos</h3>
                 <p>Meškučių tema su spalvingomis dekoracijomis, sukuriančiomis nepakartojamą atmosferą kiekvienam vaikui.</p>
