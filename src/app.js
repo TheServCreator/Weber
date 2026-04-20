@@ -47,7 +47,7 @@
       this.dots = this.slides.map((_, i) => {
         const b = document.createElement('button');
         b.type = 'button';
-        b.setAttribute('aria-label', `Skaidrė ${i + 1}`);
+        b.setAttribute('aria-label', `Go to slide ${i + 1}`);
         b.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -103,36 +103,49 @@
     _start() {
       this._stopTimers();
       if (!this.autoplay) return;
+
       this._resetProgress();
       this.raf = requestAnimationFrame(this._tickProgress);
-      this.timer = setInterval(() => { this.next(); }, this.intervalMs);
+
+      this.timer = setInterval(() => {
+        this.next();
+      }, this.intervalMs);
     }
 
-    _pause() { this._stopTimers(); }
+    _pause() {
+      this._stopTimers();
+    }
 
     _bind() {
       if (this.prevBtn) {
         this.prevBtn.addEventListener('click', (e) => {
-          e.preventDefault(); e.stopPropagation();
-          this.prev(); this._start();
+          e.preventDefault();
+          e.stopPropagation();
+          this.prev();
+          this._start();
         });
       }
       if (this.nextBtn) {
         this.nextBtn.addEventListener('click', (e) => {
-          e.preventDefault(); e.stopPropagation();
-          this.next(); this._start();
+          e.preventDefault();
+          e.stopPropagation();
+          this.next();
+          this._start();
         });
       }
 
       this.root.addEventListener('mouseenter', () => this._pause());
       this.root.addEventListener('mouseleave', () => this._start());
+
       document.addEventListener('visibilitychange', () => {
-        if (document.hidden) this._pause(); else this._start();
+        if (document.hidden) this._pause();
+        else this._start();
       });
+
       window.addEventListener('resize', () => {
-        const prev = this.index;
+        const prevIndex = this.index;
         this._measure();
-        this.goTo(prev, false);
+        this.goTo(prevIndex, false);
       });
 
       const onDown = (e) => {
@@ -144,12 +157,14 @@
         const m = /translateX\(([-0-9.]+)px\)/.exec(this.track.style.transform || '');
         this.startTranslate = m ? Number(m[1]) : this._translateFor(this.index);
       };
+
       const onMove = (e) => {
         if (!this.isDragging) return;
         this.currentX = (e.touches ? e.touches[0].clientX : e.clientX);
         const dx = this.currentX - this.startX;
         this.track.style.transform = `translateX(${this.startTranslate + dx}px)`;
       };
+
       const onUp = () => {
         if (!this.isDragging) return;
         this.isDragging = false;
@@ -164,6 +179,7 @@
       this.root.addEventListener('mousedown', onDown);
       this.root.addEventListener('mousemove', onMove);
       window.addEventListener('mouseup', onUp);
+
       this.root.addEventListener('touchstart', onDown, { passive: true });
       this.root.addEventListener('touchmove', onMove, { passive: true });
       this.root.addEventListener('touchend', onUp);
@@ -186,6 +202,7 @@
 
     handleRoute() {
       const hash = window.location.hash.slice(1) || '';
+
       if (hash === 'contact') {
         this.showSignupPage();
       } else if (hash === 'teddy-birthdays') {
@@ -198,15 +215,43 @@
 
       setTimeout(() => {
         document.querySelectorAll('.carousel').forEach((el) => new SimpleCarousel(el));
+
         document.querySelectorAll('[data-reveal]').forEach((el) => {
           el.style.opacity = '0';
           el.style.transform = 'translateY(10px)';
-          el.style.transition = 'opacity 800ms cubic-bezier(0.4,0,0.2,1),transform 800ms cubic-bezier(0.4,0,0.2,1)';
+          el.style.transition = 'opacity 800ms cubic-bezier(0.4, 0, 0.2, 1), transform 800ms cubic-bezier(0.4, 0, 0.2, 1)';
+
           requestAnimationFrame(() => {
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
           });
         });
+
+        // Teddy form handler
+        const teddyForm = document.querySelector('.teddy-form');
+        if (teddyForm) {
+          teddyForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(teddyForm);
+            fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(data).toString()
+            })
+            .then(() => {
+              const success = document.querySelector('.form-success');
+              if (success) { success.style.display = 'block'; }
+              teddyForm.reset();
+            })
+            .catch(() => {
+              const mailto = `mailto:info@steamedukacija.lt?subject=Mesk%C5%AB%C4%8Di%C5%B3%20gimtadienis&body=` +
+                encodeURIComponent(
+                  `Vardas: ${data.get('name')}\nEl. paštas: ${data.get('email')}\nTelefonas: ${data.get('phone')}\nMiestas: ${data.get('city')}\nData: ${data.get('date')}\nSvečių skaičius: ${data.get('guests')}\nKomentarai: ${data.get('comments')}`
+                );
+              window.location.href = mailto;
+            });
+          });
+        }
       }, 0);
     }
 
@@ -216,21 +261,22 @@
 
     showSignupPage() {
       this.container.innerHTML = `
-        <section class="section inner-wrap" data-reveal style="--d:140ms">
-          <h2 class="h2 green">Gimtadienio Registracija</h2>
+        <section class="section inner-wrap" data-reveal style="--d: 140ms">
+          <h2 class="h2">Gimtadienio Registracija 🎂</h2>
           <div class="signup-wrapper">
-            <div class="signup-form">
+            <form class="signup-form" name="gimtadienis-registracija" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="gimtadienis-registracija">
               <div class="form-group">
                 <label for="name">Vardas</label>
-                <input type="text" id="name" name="name" required placeholder="Jūsų vardas">
+                <input type="text" id="name" name="name" required>
               </div>
               <div class="form-group">
                 <label for="email">El. paštas</label>
-                <input type="email" id="email" name="email" required placeholder="el.pastas@example.com">
+                <input type="email" id="email" name="email" required>
               </div>
               <div class="form-group">
                 <label for="phone">Telefonas</label>
-                <input type="tel" id="phone" name="phone" placeholder="+370 000 00000">
+                <input type="tel" id="phone" name="phone">
               </div>
               <div class="form-group">
                 <label for="city">Miestas</label>
@@ -242,27 +288,27 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="date">Gimtadienio data</label>
+                <label for="date">Gimtadienio Data</label>
                 <input type="date" id="date" name="date" required>
               </div>
               <div class="form-group">
-                <label for="guests">Svečių skaičius</label>
-                <input type="number" id="guests" name="guests" min="1" required placeholder="10">
+                <label for="guests">Svečių Skaičius</label>
+                <input type="number" id="guests" name="guests" min="1" required>
               </div>
               <div class="form-group">
-                <label for="party-type">Šventės tipas</label>
+                <label for="party-type">Šventės Tipas</label>
                 <select id="party-type" name="party-type" required>
                   <option value="">Pasirinkite šventės tipą</option>
                   <option value="bricks4kidz">Bricks4Kidz</option>
                   <option value="medical">Little Medical School</option>
-                  <option value="teddy">Meškučiai – Sukurk Mus</option>
-                  <option value="extras">Gimtadienio Papildai</option>
+                  <option value="teddy">Meškučių Gimtadienio Šventė</option>
+                  <option value="extras">Šventės Priedai ir Pramogos</option>
                 </select>
               </div>
-              <button type="button" class="reg-btn" style="width:100%;margin-top:8px">Registruotis</button>
-            </div>
+              <button type="submit" class="reg-btn" style="width:100%;margin-top:8px">🎉 Registruotis</button>
+            </form>
             <div class="signup-image-wrap">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F981c188440564f9ca66e89daf788983d?format=webp&width=800" alt="Gimtadienio šventė" class="signup-image">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F981c188440564f9ca66e89daf788983d?format=webp&width=800" alt="Birthday party" class="signup-image">
             </div>
           </div>
         </section>
@@ -271,158 +317,140 @@
 
     showTeddyPage() {
       this.container.innerHTML = `
-        <section class="section inner-wrap teddy-page" data-reveal style="--d:140ms">
+        <section class="section inner-wrap" data-reveal style="--d: 140ms">
+          <h2 class="h2">Meškučių Gimtadienio Šventė 🧸</h2>
 
           <div class="teddy-hero">
-            <div class="teddy-hero-stars"></div>
-            <div class="teddy-hero-content">
-              <img src="/logos/meskuciai.jpg" alt="Meškučiai" class="teddy-hero-logo">
-              <h1 class="teddy-hero-title">Įkvėpk Mums Gyvybę</h1>
-              <p class="teddy-hero-sub">Gimtadienio šventėje &nbsp;·&nbsp; Renginyje &nbsp;·&nbsp; Susibūrime</p>
+            <h3>Surengkite nepamirštamą šventę su mylimiausiais meškučiais!</h3>
+            <p>Kiekvienas vaikas ateina su savo plūšiniu draugu – ir išeina su nauja istorija.</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card feature-green">
+              <h3>🧸 Teminės Dekoracijos</h3>
+              <p>Meškučių tema su spalvingomis dekoracijomis, sukuriančiomis nepakartojamą atmosferą</p>
+            </div>
+            <div class="feature-card feature-blue">
+              <h3>🎮 Interaktyvūs Žaidimai</h3>
+              <p>Žaidimai su plūšinukais, kūrybinės veiklos ir smagūs konkursai kiekvienam vaikui</p>
+            </div>
+            <div class="feature-card feature-red">
+              <h3>🎂 Šventinis Pyragas</h3>
+              <p>Specialiai pagamintas pyragas su meškučio figūra – tikras šventės centras</p>
+            </div>
+            <div class="feature-card feature-yellow">
+              <h3>🎁 Dovanėlės Svečiams</h3>
+              <p>Kiekvienas svečias išeina su atminimėliu – maža meškučio istorija namuose</p>
             </div>
           </div>
 
-          <div class="teddy-banner-strip">
-            Sukurk savo unikalų meškutį — prikimšk, aprenk, pavadink ir išnesk namo!
-          </div>
+          <div class="teddy-cta">✨ Įkvėpk Meškučiui gyvybę! ✨</div>
 
-          <h2 class="h2" style="color:#7a4e8c;font-family:Nunito,sans-serif">Apie Meškučius</h2>
-          <p class="description">
-            Meškučiai — tai ypatinga kūrybinė veikla, kurios metu kiekvienas vaikas pats sukuria savo
-            pliušinį draugą. Pasirink, prikimšk, aprenk ir paskirk vardą — gimsta naujas draugas!
-            Tobulas gimtadienio prisiminimas, kurį vaikas parsineš namo.
-          </p>
-
-          <div class="teddy-steps">
-            <div class="teddy-step">
-              <div class="teddy-step-num">1</div>
-              <h4>Pasirink</h4>
-              <p>Pasirink savo mėgstamą meškučio ar gyvūnėlio formą</p>
-            </div>
-            <div class="teddy-step">
-              <div class="teddy-step-num">2</div>
-              <h4>Prikimšk</h4>
-              <p>Pats prikimšk savo draugą minkštu pūku ir įdėk širdelę</p>
-            </div>
-            <div class="teddy-step">
-              <div class="teddy-step-num">3</div>
-              <h4>Aprenk</h4>
-              <p>Pasirink kostiumą ir papuošk savo unikalų kūrinį</p>
-            </div>
-            <div class="teddy-step">
-              <div class="teddy-step-num">4</div>
-              <h4>Pavadink</h4>
-              <p>Suteik vardą ir išduok metrikus savo naujam draugui</p>
-            </div>
-          </div>
-
-          <h2 class="h2" style="color:#7a4e8c;font-family:Nunito,sans-serif">Kodėl Meškučiai?</h2>
-
-          <div class="teddy-grid">
-            <div class="teddy-feature">
-              <div class="teddy-feature-icon-bg" style="background:linear-gradient(135deg,#a8d8ea,#d4b8e8)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a3060" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <div class="signup-wrapper">
+            <form class="signup-form teddy-form" name="meskuciai-registracija" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="meskuciai-registracija">
+              <h3 style="margin:0 0 20px;font-family:'Baloo 2',cursive;color:var(--b4k-green)">Registracija 🧸</h3>
+              <div class="form-group">
+                <label for="t-name">Vaiko vardas</label>
+                <input type="text" id="t-name" name="name" required>
               </div>
-              <h3>Nepamirštama dovana</h3>
-              <p>Kiekvienas vaikas parsineša namo paties sukurtą meškutį — unikalų ir mylimą</p>
-            </div>
-            <div class="teddy-feature">
-              <div class="teddy-feature-icon-bg" style="background:linear-gradient(135deg,#f9b7d0,#ffd6e8)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7a3060" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              <div class="form-group">
+                <label for="t-email">Tėvelių el. paštas</label>
+                <input type="email" id="t-email" name="email" required>
               </div>
-              <h3>Džiaugsmas visiems</h3>
-              <p>Tinkama 3–12 metų vaikams, žaismingas ir kūrybiškas procesas</p>
-            </div>
-            <div class="teddy-feature">
-              <div class="teddy-feature-icon-bg" style="background:linear-gradient(135deg,#c8f0d8,#a8d8ea)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a6040" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <div class="form-group">
+                <label for="t-phone">Telefonas</label>
+                <input type="tel" id="t-phone" name="phone" required>
               </div>
-              <h3>Unikalus patyrimas</h3>
-              <p>Vaikų sukurti meškučiai yra visiškai unikalūs — niekur kitur tokio nerasite</p>
-            </div>
-            <div class="teddy-feature">
-              <div class="teddy-feature-icon-bg" style="background:linear-gradient(135deg,#fff3b0,#ffd6a5)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7a5000" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <div class="form-group">
+                <label for="t-city">Miestas</label>
+                <select id="t-city" name="city" required>
+                  <option value="">Pasirinkite miestą</option>
+                  <option value="vilnius">Vilnius</option>
+                  <option value="kaunas">Kaunas</option>
+                  <option value="klaipeda">Klaipėda</option>
+                </select>
               </div>
-              <h3>Grupinė veikla</h3>
-              <p>Puikiai tinka gimtadieniams, mokyklos renginiams ir šeimų susibūrimams</p>
+              <div class="form-group">
+                <label for="t-date">Pageidaujama data</label>
+                <input type="date" id="t-date" name="date" required>
+              </div>
+              <div class="form-group">
+                <label for="t-guests">Vaikų skaičius</label>
+                <input type="number" id="t-guests" name="guests" min="1" required>
+              </div>
+              <div class="form-group">
+                <label for="t-comments">Komentarai / pageidavimai</label>
+                <input type="text" id="t-comments" name="comments" placeholder="Pvz., vaiko amžius, tema...">
+              </div>
+              <button type="submit" class="reg-btn" style="width:100%;margin-top:8px;background:var(--b4k-green);box-shadow:0 6px 0 0 #007a30">🧸 Registruotis</button>
+              <div class="form-success">✅ Ačiū! Susisieksime su jumis artimiausiu metu.</div>
+            </form>
+            <div class="signup-image-wrap">
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fb1c4d2db544a48c6a3d2e75974aa9b70?format=webp&width=800" alt="Meškučių šventė" class="signup-image" style="border-color:var(--b4k-green)">
             </div>
           </div>
-
-          <div class="teddy-cta">
-            <p style="color:#5a3a7a;font-weight:700;font-size:16px;margin:0 0 16px">
-              Norite surengti Meškučių šventę? Susisiekite su mumis!
-            </p>
-            <a href="https://www.facebook.com/profile.php?id=100064280611950" target="_blank" rel="noreferrer" class="teddy-reg-btn">
-              Susisiekite per Facebook
-            </a>
-            &nbsp;&nbsp;
-            <a href="/#contact" class="teddy-reg-btn" style="background:linear-gradient(135deg,#00aa44,#007a30)">
-              Registruotis
-            </a>
-          </div>
-
         </section>
       `;
     }
 
     showExtrasPage() {
       this.container.innerHTML = `
-        <section class="section inner-wrap" data-reveal style="--d:140ms">
-          <h2 class="h2 red">Gimtadienio Papildai</h2>
-          <p class="description">Padarykite savo šventę dar geresnę su šiais nuostabiais papildais!</p>
+        <section class="section inner-wrap" data-reveal style="--d: 140ms">
+          <h2 class="h2">Šventės Priedai ir Pramogos 🎊</h2>
+          <p class="description">Padarykite jūsų šventę dar geresnę su šiais nuostabiais priedais!</p>
 
           <div class="extras-hero">
-            <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins!<br><span style="font-size:0.55em;font-family:Nunito,sans-serif;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų papildų kolekcijos</span></div>
+            <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins! 🎊<br><span style="font-size:0.55em;font-family:Nunito,sans-serif;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų priedų kolekcijos</span></div>
           </div>
 
           <div class="extras-grid-new">
             <div class="extra-card">
-              <div class="extra-card-top">
-                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&auto=format&fit=crop" alt="Animatorius">
-                <div class="extra-card-overlay"><h3 class="extra-card-name">Animatorius</h3></div>
+              <div class="extra-card-top extra-bg-1">
+                <div class="extra-card-icon">🪅</div>
+                <h3 class="extra-card-name">Piñata</h3>
+              </div>
+              <div class="extra-card-body">Spalvinga piñata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems!</div>
+            </div>
+            <div class="extra-card">
+              <div class="extra-card-top extra-bg-2">
+                <div class="extra-card-icon">🎭</div>
+                <h3 class="extra-card-name">Animatorius</h3>
               </div>
               <div class="extra-card-body">Profesionalus animatorius, kuris vedė šventę ir žaidimų programą nuo pradžios iki pabaigos.</div>
             </div>
             <div class="extra-card">
-              <div class="extra-card-top">
-                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop" alt="Balionų dekoracija">
-                <div class="extra-card-overlay"><h3 class="extra-card-name">Balionų Dekoracija</h3></div>
-              </div>
-              <div class="extra-card-body">Nuostabūs balionų dekoracijos, figūros ir kompozicijos, kurios nustebins kiekvieną.</div>
-            </div>
-            <div class="extra-card">
-              <div class="extra-card-top">
-                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&auto=format&fit=crop" alt="Fotosesija">
-                <div class="extra-card-overlay"><h3 class="extra-card-name">Fotosesija</h3></div>
+              <div class="extra-card-top extra-bg-3">
+                <div class="extra-card-icon">📸</div>
+                <h3 class="extra-card-name">Fotosesija</h3>
               </div>
               <div class="extra-card-body">Profesionali fotosesija su redakcija — nepamirštami prisiminimai visam gyvenimui.</div>
             </div>
             <div class="extra-card">
-              <div class="extra-card-top">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop" alt="Dekoruotas pyragas">
-                <div class="extra-card-overlay"><h3 class="extra-card-name">Dekoruotas Pyragas</h3></div>
+              <div class="extra-card-top extra-bg-4">
+                <div class="extra-card-icon">🎂</div>
+                <h3 class="extra-card-name">Dekoruotas Pyragas</h3>
               </div>
               <div class="extra-card-body">Specialiai pagamintas ir dekoruotas pyragas pagal pasirinktą šventės temą.</div>
             </div>
             <div class="extra-card">
-              <div class="extra-card-top">
-                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop" alt="Dovanų paketai">
-                <div class="extra-card-overlay"><h3 class="extra-card-name">Dovanų Paketai</h3></div>
+              <div class="extra-card-top extra-bg-5">
+                <div class="extra-card-icon">🎁</div>
+                <h3 class="extra-card-name">Dovanų Paketai</h3>
               </div>
-              <div class="extra-card-body">Specialiai paruošti dovanų paketai kiekvienam svečiui — su siurprizais viduje.</div>
+              <div class="extra-card-body">Specialiai paruošti dovanų paketai kiekvienam svečiui — su siurprizais viduje!</div>
             </div>
             <div class="extra-card">
-              <div class="extra-card-top">
-                <img src="https://images.unsplash.com/photo-1533294455009-a77b7557d2d1?w=600&auto=format&fit=crop" alt="Pinata">
-                <div class="extra-card-overlay"><h3 class="extra-card-name">Piñata</h3></div>
+              <div class="extra-card-top extra-bg-6">
+                <div class="extra-card-icon">🎈</div>
+                <h3 class="extra-card-name">Balionų Dekoracija</h3>
               </div>
-              <div class="extra-card-body">Spalvinga piñata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems.</div>
+              <div class="extra-card-body">Nuostabūs balionų dekoracijos, figūros ir kompozicijos, kurios nustebins kiekvieną.</div>
             </div>
           </div>
 
           <div class="cta-section">
-            <a href="/#contact" class="reg-btn">Pasirinkti Papildus</a>
+            <a href="/#contact" class="reg-btn">🎉 Pasirinkti Priedus</a>
           </div>
         </section>
       `;
@@ -440,6 +468,7 @@
       body.classList.remove('preload');
       body.classList.add('loaded');
     }
+
     new PageRouter();
   });
 })();
