@@ -32,6 +32,31 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   min-height:80px;
 }
 
+/* 1. Update the container */
+.header-inner {
+    display: grid;
+    /* This creates: 1 part flexible space | The actual content size | 1 part flexible space */
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    width: 100%;
+}
+
+/* 2. Put the tagline in the middle column */
+.header-tagline {
+    grid-column: 2; 
+    text-align: center;
+    white-space: nowrap; /* Prevents it from breaking into two lines */
+}
+
+/* 3. Put the contact info in the third column and push it to the far right */
+.header-right {
+    grid-column: 3;
+    display: flex;
+    justify-content: flex-end; /* This keeps it snapped to the right edge */
+    align-items: center;
+    gap: 18px;
+}
+
 /* Centre: ALL-CAPS pulsating tagline */
 .header-tagline{flex: 1; text-align:center}
 .header-tagline-text{
