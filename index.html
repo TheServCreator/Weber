@@ -6,17 +6,11 @@
   <title>Gimtadieniai – Bricks4Kidz &amp; Little Medical School</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!--
-    Nunito covers Lithuanian diacritics (ą č ę ė į š ų ū ž).
-    Google Fonts serves the latin-ext subset automatically when
-    the browser requests those code points.
-  -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body class="preload">
 
-  <!-- Floating background bubbles -->
   <div class="bg-circle bg-circle-1"></div>
   <div class="bg-circle bg-circle-2"></div>
   <div class="bg-circle bg-circle-3"></div>
@@ -25,7 +19,6 @@
 
   <header class="header" data-reveal style="--d:0ms">
     <div class="header-inner">
-      <div class="brand">🎂 Gimtadieniai</div>
       <nav class="nav">
         <a href="/">Pradžia</a>
         <a href="/#contact">Registruotis</a>
@@ -33,10 +26,6 @@
     </div>
   </header>
 
-  <!--
-    LEGO BRICK STRIP — 7 coloured bricks with CSS studs.
-    Each .lego-strip-brick has ::before (studs) and ::after (brick face).
-  -->
   <div class="lego-strip" aria-hidden="true">
     <div class="lego-strip-brick lsb-1"></div>
     <div class="lego-strip-brick lsb-2"></div>
@@ -49,155 +38,248 @@
 
   <main class="container" data-reveal style="--d:80ms">
 
-    <!-- HERO full width -->
+    <!-- HERO -->
     <section class="hero-section" data-reveal style="--d:100ms">
       <div class="carousel" data-autoplay="true" data-interval="4000" aria-label="Hero carousel">
-        <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
-        <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+        <button class="carousel__btn carousel__btn--prev" aria-label="Ankstesnis">&#8249;</button>
+        <button class="carousel__btn carousel__btn--next" aria-label="Kitas">&#8250;</button>
         <div class="carousel__viewport">
           <div class="carousel__track">
             <a href="https://www.bricks4kidz.lt/gimtadienio-sventes/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=1600" alt="Bricks4Kidz LEGO party" class="slide-img">
-              <div class="slide-overlay"><div class="slide-title">Bricks4Kidz 🧱</div><div class="slide-sub">Kūrybinga LEGO šventė vaikams</div></div>
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=1600" alt="Bricks4Kidz LEGO gimtadienis" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Bricks4Kidz</div><div class="slide-sub">Kūrybinga LEGO šventė vaikams</div></div>
             </a>
             <a href="https://littlemedicalschool.com/lithuania/parties/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=1600" alt="Little Medical School party" class="slide-img">
-              <div class="slide-overlay"><div class="slide-title">Little Medical School 🩺</div><div class="slide-sub">Medicininė edukacija ir pramoga</div></div>
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=1600" alt="Little Medical School gimtadienis" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Little Medical School</div><div class="slide-sub">Medicininė edukacija ir pramoga</div></div>
             </a>
             <a href="https://www.bricks4kidz.lt/gimtadienio-sventes/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=1600" alt="Bricks4Kidz workshop" class="slide-img">
-              <div class="slide-overlay"><div class="slide-title">Bricks4Kidz 🚀</div><div class="slide-sub">Nepamiršami LEGO momentai</div></div>
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=1600" alt="Bricks4Kidz dirbtuvės" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Bricks4Kidz</div><div class="slide-sub">Nepamiršami LEGO momentai</div></div>
             </a>
             <a href="https://littlemedicalschool.com/lithuania/parties/" target="_blank" rel="noreferrer" class="carousel__slide carousel__slide--link">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=1600" alt="Medical roleplay party" class="slide-img">
-              <div class="slide-overlay"><div class="slide-title">Little Medical School 💊</div><div class="slide-sub">Smagi medicininė šventė</div></div>
+              <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=1600" alt="Medicininė šventė" class="slide-img">
+              <div class="slide-overlay"><div class="slide-title">Little Medical School</div><div class="slide-sub">Smagi medicininė šventė</div></div>
             </a>
           </div>
         </div>
         <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
-        <div class="carousel__dots" aria-label="Carousel pagination"></div>
+        <div class="carousel__dots" aria-label="Carousel puslapiai"></div>
       </div>
     </section>
 
-    <!-- LEGO CHARACTER BANNER -->
+    <!-- BANNER -->
     <div class="lego-banner" data-reveal style="--d:160ms">
-      <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=600" alt="LEGO characters" class="lego-banner-img" onerror="this.style.display='none'">
+      <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=600" alt="LEGO personažai" class="lego-banner-img" onerror="this.style.display='none'">
       <div class="lego-banner-text">
-        Net 25 gimtadienio temos! 🎉
+        Net 25 gimtadienio temos!
         <span class="lego-banner-sub">Pasirink savo mėgstamiausią ir sukurk nepamirštamą šventę</span>
       </div>
-      <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=400" alt="Kids celebrating" class="lego-banner-img" onerror="this.style.display='none'">
+      <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=400" alt="Vaikai švenčia" class="lego-banner-img" onerror="this.style.display='none'">
     </div>
 
     <!-- PARTY OPTIONS -->
     <section class="parties-section" data-reveal style="--d:220ms">
       <div class="inner-wrap">
-        <h2 class="h2">Gimtadienio Parinktys 🎉</h2>
+        <h2 class="h2">Gimtadienio Parinktys</h2>
 
-        <!-- Top row: 3 cards -->
         <div class="grid-top">
 
           <a class="card card-bricks4kidz" href="https://www.bricks4kidz.lt/gimtadienio-sventes/" target="_blank" rel="noreferrer">
-            <div class="card-title">🧱 Bricks4Kidz</div>
+            <div class="card-title">Bricks4Kidz</div>
             <div class="card-carousel-wrap">
-              <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Bricks4Kidz carousel">
-                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
-                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="3000" aria-label="Bricks4Kidz nuotraukos">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Ankstesnis">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Kitas">&#8250;</button>
                 <div class="carousel__viewport">
                   <div class="carousel__track">
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=800" alt="Lego building" class="slide-img"></div>
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=800" alt="Building workshop" class="slide-img"></div>
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=800" alt="Lego creation" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=800" alt="LEGO kūryba" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=800" alt="LEGO dirbtuvės" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=800" alt="LEGO kūrinys" class="slide-img"></div>
                   </div>
                 </div>
-                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+                <div class="carousel__dots" aria-label="Carousel puslapiai"></div>
               </div>
             </div>
             <div class="card-hint">Kūrybinga LEGO šventė</div>
           </a>
 
           <a class="card card-medical" href="https://littlemedicalschool.com/lithuania/parties/" target="_blank" rel="noreferrer">
-            <div class="card-title">🩺 Little Medical School</div>
+            <div class="card-title">Little Medical School</div>
             <div class="card-carousel-wrap">
-              <div class="carousel carousel--card" data-autoplay="true" data-interval="3500" aria-label="Medical school carousel">
-                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
-                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="3500" aria-label="Medical School nuotraukos">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Ankstesnis">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Kitas">&#8250;</button>
                 <div class="carousel__viewport">
                   <div class="carousel__track">
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800" alt="Medical roleplay" class="slide-img"></div>
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=800" alt="Doctor training" class="slide-img"></div>
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800" alt="Medical game" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800" alt="Medicininiai žaidimai" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=800" alt="Gydytojo žaidimas" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800" alt="Medicinos praktika" class="slide-img"></div>
                   </div>
                 </div>
-                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+                <div class="carousel__dots" aria-label="Carousel puslapiai"></div>
               </div>
             </div>
             <div class="card-hint">Medicininė edukacija ir pramoga</div>
           </a>
 
           <a class="card card-teddy" href="/#teddy-birthdays">
-            <div class="card-title">🧸 Pliušinių Gyvūnų Šventė</div>
+            <div class="card-title">Meškučiai – Sukurk Mus!</div>
             <div class="card-carousel-wrap">
-              <div class="carousel carousel--card" data-autoplay="true" data-interval="3200" aria-label="Teddy bears carousel">
-                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
-                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="3200" aria-label="Meškučiai nuotraukos">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Ankstesnis">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Kitas">&#8250;</button>
                 <div class="carousel__viewport">
                   <div class="carousel__track">
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fb1c4d2db544a48c6a3d2e75974aa9b70?format=webp&width=800" alt="Teddy bear doctor" class="slide-img"></div>
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa9fb08ffa873450893193bd4b7ff5587?format=webp&width=800" alt="Teddy bear birthday" class="slide-img"></div>
-                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F00aafa617b7347d6bea8c096685b6c07?format=webp&width=800" alt="Teddy bear party" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fb1c4d2db544a48c6a3d2e75974aa9b70?format=webp&width=800" alt="Meškučių šventė" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa9fb08ffa873450893193bd4b7ff5587?format=webp&width=800" alt="Meškučių gimtadienis" class="slide-img"></div>
+                    <div class="carousel__slide"><img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F00aafa617b7347d6bea8c096685b6c07?format=webp&width=800" alt="Meškučių šventimas" class="slide-img"></div>
                   </div>
                 </div>
-                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+                <div class="carousel__dots" aria-label="Carousel puslapiai"></div>
               </div>
             </div>
-            <div class="card-hint">Pagal temą su plūšinių žaisliukų</div>
+            <div class="card-hint">Įkvėpk gyvenimą savo meškučiui</div>
           </a>
         </div>
 
-        <!-- Bottom row: Extras centered -->
+        <!-- Bottom: Extras -->
         <div class="grid-bottom">
           <a class="card card-extras" href="/#birthday-extras">
-            <div class="card-title">🎈 Gimtadienio Papildai</div>
+            <div class="card-title">Gimtadienio Papildai</div>
             <div class="card-carousel-wrap">
-              <div class="carousel carousel--card" data-autoplay="true" data-interval="2800" aria-label="Birthday extras carousel">
-                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
-                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="2800" aria-label="Papildai carousel">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Ankstesnis">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Kitas">&#8250;</button>
                 <div class="carousel__viewport">
                   <div class="carousel__track">
-                    <div class="carousel__slide"><div class="slide-bg bg-extras-1"></div><div class="extras-slide-content"><div class="extras-slide-icon">🎭</div><div class="extras-slide-label">Animatoriai</div></div></div>
-                    <div class="carousel__slide"><div class="slide-bg bg-extras-2"></div><div class="extras-slide-content"><div class="extras-slide-icon">🪅</div><div class="extras-slide-label">Piñata</div></div></div>
-                    <div class="carousel__slide"><div class="slide-bg bg-extras-3"></div><div class="extras-slide-content"><div class="extras-slide-icon">📸</div><div class="extras-slide-label">Fotosesija</div></div></div>
+                    <div class="carousel__slide" style="position:relative">
+                      <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop" alt="Animatoriai" class="slide-img">
+                      <div class="extras-slide-label">Animatoriai</div>
+                    </div>
+                    <div class="carousel__slide" style="position:relative">
+                      <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&auto=format&fit=crop" alt="Balionai" class="slide-img">
+                      <div class="extras-slide-label">Balionai</div>
+                    </div>
+                    <div class="carousel__slide" style="position:relative">
+                      <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&auto=format&fit=crop" alt="Dovanos" class="slide-img">
+                      <div class="extras-slide-label">Dovanos</div>
+                    </div>
                   </div>
                 </div>
-                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+                <div class="carousel__dots" aria-label="Carousel puslapiai"></div>
               </div>
             </div>
-            <div class="card-hint">Piñata, animatoriai, ir daugiau</div>
+            <div class="card-hint">Piñata, animatoriai ir daugiau</div>
           </a>
         </div>
 
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact" class="section inner-wrap" data-reveal style="--d:280ms">
-      <h2 class="h2">Susisiekite su Mumis 📞</h2>
+      <h2 class="h2 green">Susisiekite su Mumis</h2>
       <div class="contact-wrapper">
         <div class="contact">
-          <div>📧 El. paštas: info@gimtadieniai.com</div>
-          <div>📱 Telefonas: +370 000 00000</div>
-          <div>📸 Instagram: @gimtadieniai</div>
-          <a href="/#contact" class="reg-btn">
-            <span class="btn-icon-tr">🩺</span>
-            🎉 Registruotis Šventei
-            <span class="btn-icon-bl">🧸</span>
-          </a>
+          <div class="contact-row">
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@gimtadieniai.com
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.94a16 16 0 0 0 6.06 6.06l1.94-1.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +370 000 00000
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @gimtadieniai
+            </div>
+            <div class="contact-cta">
+              <a href="/#contact" class="reg-btn">Registruotis Šventei</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-cols">
+
+        <!-- Bricks4Kidz -->
+        <div class="footer-col">
+          <a href="https://www.bricks4kidz.lt/" target="_blank" rel="noreferrer" class="footer-logo-link">
+            <img src="/logos/bricks4kidz.jpg" alt="Bricks4Kidz" class="footer-logo-img">
+          </a>
+          <div class="footer-brand-name">Bricks4Kidz Lietuva</div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/Bricks4KidzLietuva" target="_blank" rel="noreferrer" class="footer-social-link fb">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+            <a href="https://www.instagram.com/bricks4kidzlietuva/" target="_blank" rel="noreferrer" class="footer-social-link ig">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+
+        <!-- Little Medical School -->
+        <div class="footer-col">
+          <a href="https://littlemedicalschool.com/lithuania/" target="_blank" rel="noreferrer" class="footer-logo-link">
+            <img src="/logos/lms.jpg" alt="Little Medical School" class="footer-logo-img">
+          </a>
+          <div class="footer-brand-name">Little Medical School Lietuva</div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/LittlemedicalschoolLietuva" target="_blank" rel="noreferrer" class="footer-social-link fb">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+            <a href="https://www.instagram.com/mazojimedicinosmokykla/" target="_blank" rel="noreferrer" class="footer-social-link ig">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+
+        <!-- Business Kids -->
+        <div class="footer-col">
+          <a href="https://businesskids.lt/" target="_blank" rel="noreferrer" class="footer-logo-link">
+            <img src="/logos/businesskids.jpg" alt="Business Kids" class="footer-logo-img">
+          </a>
+          <div class="footer-brand-name">Business Kids Lietuva</div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61572094061392" target="_blank" rel="noreferrer" class="footer-social-link fb">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+
+        <!-- Meskuciai -->
+        <div class="footer-col">
+          <a href="https://www.facebook.com/profile.php?id=100064280611950" target="_blank" rel="noreferrer" class="footer-logo-link">
+            <img src="/logos/meskuciai.jpg" alt="Meskuciai" class="footer-logo-img" style="border-radius:50%">
+          </a>
+          <div class="footer-brand-name">Meškučiai – Sukurk Mus!</div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=100064280611950" target="_blank" rel="noreferrer" class="footer-social-link fb">
+              <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Gimtadieniai. Visos teises saugomos.
+      </div>
+    </div>
+  </footer>
 
   <script type="module" src="/src/app.js"></script>
 </body>
