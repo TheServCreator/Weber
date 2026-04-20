@@ -42,6 +42,8 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   text-shadow:2px 2px 0 rgba(0,0,0,.22);
   display:inline-block;
   animation:pulse25 2.2s ease-in-out infinite;
+  text-align: center;
+  align-items: center;
 }
 @keyframes pulse25{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @media(prefers-reduced-motion:reduce){.header-tagline-text{animation:none}}
