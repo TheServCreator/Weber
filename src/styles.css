@@ -210,7 +210,6 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   padding:32px 0 48px;
   border-top:4px solid rgb(240, 240, 240);
   margin-top:20px;
-  background:#f8fdf9;
 }
 .brands-grid{
   display:grid;
@@ -249,7 +248,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 /* ── EXTRAS PAGE ── */
 .extras-hero{
   width:100%;border-radius:4px;overflow:hidden;margin-bottom:28px;
-  position:relative;height:180px;background:var(--b4k-orange);
+  position:relative;height:180px;background:var(--b4k-blue);
   display:flex;align-items:center;justify-content:center;
 }
 .extras-hero-text{
