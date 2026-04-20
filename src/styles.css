@@ -91,7 +91,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 
 
 /* ── LAYOUT ── */
-.container{position:relative;z-index:1;padding-bottom:60px;background:#fff}
+.container{position:relative;z-index:1;background:#fff}
 .inner-wrap{max-width:1400px;margin:0 auto;padding:0 24px}
 .section{margin-bottom:22px}
 .h2{

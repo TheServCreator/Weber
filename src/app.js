@@ -366,7 +366,7 @@
             <!-- Logo -->
             <div class="teddy-logo-section" data-reveal style="--d:100ms">
               <img src="/logos/meskuciai.jpeg" alt="Meškučiai – Sukurk mus!" class="teddy-logo-img">
-              <p class="teddy-logo-tagline">Kiekvienas vaikas ateina su savo plušiniu draugu – ir išeina su nauja istorija</p>
+              <p class="teddy-logo-tagline">Kiekvienas vaikas ateina su savo pliušiniu draugu – ir išeina su nauja istorija</p>
             </div>
 
             <!-- Feature cards -->
@@ -383,7 +383,7 @@
                   <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=60&h=60&fit=crop&auto=format" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover">
                 </div>
                 <h3>Interaktyvūs Žaidimai</h3>
-                <p>Žaidimai su plušinukais, kūrybinės veiklos ir smagūs konkursai kiekvienam šventės dalyviui.</p>
+                <p>Žaidimai su pliušinukais, kūrybinės veiklos ir smagūs konkursai kiekvienam šventės dalyviui.</p>
               </div>
               <div class="teddy-card">
                 <div class="teddy-card-icon teddy-card-icon-3">
