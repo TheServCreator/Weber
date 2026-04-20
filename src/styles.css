@@ -316,7 +316,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 .feature-red{background:var(--b4k-red)}
 .feature-yellow{background:var(--b4k-orange)}
 
-.cta-section{text-align:center;padding:32px;background:#f5f8ff;border-radius:4px;border:2px solid #d0e0ff}
+.cta-section{text-align:center;padding:32px;border-radius:4px;}
 
 /* ── SIGNUP ── */
 .signup-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-top:24px}

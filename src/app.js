@@ -457,7 +457,12 @@
       this.container.innerHTML = `
         <section class="section inner-wrap" data-reveal style="--d: 140ms">
           <h2 class="h2" style="color: #E8181A;">Šventės Priedai ir Pramogos</h2>
-          <a class="description">Grįžti į pradžia</a>
+
+          <div style="margin: 20px 0;">
+            <a href="/" class="reg-btn" style="display: inline-flex; width: auto; margin-top: 0;">
+                ← Grįžti į pagrindinį
+            </a>
+          </div>
 
           <div class="extras-hero">
             <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins!<br><span style="font-size:0.55em;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų priedų kolekcijos</span></div>
