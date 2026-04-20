@@ -456,9 +456,8 @@
     showExtrasPage() {
       this.container.innerHTML = `
         <section class="section inner-wrap" data-reveal style="--d: 140ms">
-          <h2 class="h2">Šventės Priedai ir Pramogos</h2>
+          <h2 class="h2" style="color: #E8181A;">Šventės Priedai ir Pramogos</h2>
           <p class="description">Padarykite jūsų šventę dar geresnę su šiais nuostabiais priedais!</p>
-
           <div class="extras-hero">
             <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins!<br><span style="font-size:0.55em;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų priedų kolekcijos</span></div>
           </div>
@@ -473,14 +472,14 @@
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-2">
-                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=400&fit=crop&auto=format" alt="Animatorius" class="extra-card-img">
+                <img src="https://69e65bf0643d4ec18925cb13.imgix.net/Robloxas.png" alt="Animatorius" class="extra-card-img">
                 <h3 class="extra-card-name">Animatorius</h3>
               </div>
               <div class="extra-card-body">Profesionalus animatorius, kuris vedė šventę ir žaidimų programą nuo pradžios iki pabaigos.</div>
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-3">
-                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&h=400&fit=crop&auto=format" alt="Fotosesija" class="extra-card-img">
+                <img src="https://69e65bf0643d4ec18925cb13.imgix.net/Fotke.jpg" alt="Fotosesija" class="extra-card-img">
                 <h3 class="extra-card-name">Fotosesija</h3>
               </div>
               <div class="extra-card-body">Profesionali fotosesija su redakcija — nepamirštami prisiminimai visam gyvenimui.</div>
@@ -501,7 +500,7 @@
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-6">
-                <img src="https://images.unsplash.com/photo-1481214110143-ed630356e1bb?w=600&h=400&fit=crop&auto=format" alt="Balionai" class="extra-card-img">
+                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=120&h=120&fit=crop&auto=format" alt="Balionai" class="extra-card-img">
                 <h3 class="extra-card-name">Balionų Dekoracija</h3>
               </div>
               <div class="extra-card-body">Nuostabūs balionų dekoracijos, figūros ir kompozicijos, kurios nustebins kiekvieną.</div>

@@ -75,7 +75,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   position:relative;display:inline-block;
   letter-spacing:.3px;
 }
-.h2::after{content:'';display:block;height:4px;border-radius:2px;background:var(--b4k-yellow);margin-top:4px}
+.h2::after{content:'';display:block;height:4px;border-radius:2px;margin-top:4px}
 
 /* ── HERO FULL WIDTH ── */
 .hero-section{width:100vw;margin-left:calc(50% - 50vw);position:relative;overflow:visible;margin-bottom:0}
@@ -208,7 +208,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 /* ── BRANDS FOOTER (4 cols) ── */
 .brands-section{
   padding:32px 0 48px;
-  border-top:4px solid var(--b4k-blue);
+  border-top:4px solid rgb(240, 240, 240);
   margin-top:20px;
   background:#f8fdf9;
 }
