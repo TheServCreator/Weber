@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const prefersReduced = () => {
     try {
       return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -197,6 +197,8 @@
         this.showTeddyPage();
       } else if (hash === 'birthday-extras') {
         this.showExtrasPage();
+      } else if (hash === 'birthday-packages') {
+        this.showPackagesPage();
       } else {
         this.showHomePage();
       }
@@ -220,12 +222,13 @@
           teddyForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const data = new FormData(teddyForm);
-            fetch('/', {
+            fetch('/api/rezervacija', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: new URLSearchParams(data).toString()
             })
-            .then(() => {
+            .then((res) => {
+              if (!res.ok) throw new Error('submit failed');
               const success = document.querySelector('.form-success');
               if (success) { success.style.display = 'block'; }
               teddyForm.reset();
@@ -246,12 +249,13 @@
           signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const data = new FormData(signupForm);
-            fetch('/', {
+            fetch('/api/rezervacija', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: new URLSearchParams(data).toString()
             })
-            .then(() => {
+            .then((res) => {
+              if (!res.ok) throw new Error('submit failed');
               const success = document.querySelector('.form-success');
               if (success) { success.style.display = 'block'; }
               signupForm.reset();
@@ -272,9 +276,10 @@
     showSignupPage() {
       this.container.innerHTML = `
         <section class="section inner-wrap" data-reveal style="--d: 140ms">
-          <h2 class="h2">Gimtadienio Registracija</h2>
+          <h2 class="h2">Gimtadienio Rezervacija</h2>
+          <div class="phone-note">Teirautis telefonu: <a href="tel:+37065050556">+370 650 50556</a></div>
           <div class="signup-wrapper">
-            <form class="signup-form" name="gimtadienis-registracija" method="POST" data-netlify="true">
+            <form class="signup-form" name="gimtadienis-registracija" method="POST">
               <input type="hidden" name="form-name" value="gimtadienis-registracija">
               <div class="form-group">
                 <label for="name">Vardas</label>
@@ -306,17 +311,28 @@
                 <input type="number" id="guests" name="guests" min="1" required>
               </div>
               <div class="form-group">
-                <label for="party-type">Šventės Tipas</label>
-                <select id="party-type" name="party-type" required>
-                  <option value="">Pasirinkite šventės tipą</option>
-                  <option value="bricks4kidz">Bricks4Kidz</option>
-                  <option value="medical">Little Medical School</option>
-                  <option value="teddy">Meškučių Gimtadienio Šventė</option>
-                  <option value="extras">Šventės Priedai ir Pramogos</option>
+                <label>Pageidaujamos pramogos</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Pinata"> Pinata</label>
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Veidų piešimas"> Veidų piešimas</label>
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="360 photo/selfie kamera"> 360 photo/selfie kamera</label>
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Teminė dekoracija"> Teminė dekoracija</label>
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Dovanų paketai"> Dovanų paketai</label>
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Balionų dekoracija"> Balionų dekoracija</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paketas">Gimtadienio paketas</label>
+                <select id="paketas" name="paketas">
+                  <option value="">Pasirinkite paketą</option>
+                  <option value="Bronzinis">Bronzinis</option>
+                  <option value="Sidabrinis">Sidabrinis</option>
+                  <option value="Auksinis">Auksinis</option>
+                  <option value="Deimantinis">Deimantinis</option>
                 </select>
               </div>
-              <button type="submit" class="reg-btn" style="width:100%;margin-top:8px">Registruotis</button>
-              <div class="form-success">Aciu! Susisieksime su jumis artimiausiu metu.</div>
+              <button type="submit" class="reg-btn" style="width:100%;margin-top:8px">Rezervuoti</button>
+              <div class="form-success">Ačiū! Susisieksime su jumis artimiausiu metu.</div>
             </form>
             <div class="signup-image-wrap">
               <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F981c188440564f9ca66e89daf788983d?format=webp&width=800" alt="Birthday party" class="signup-image">
@@ -373,7 +389,7 @@
             <div class="teddy-cards-grid" data-reveal style="--d:140ms">
               <div class="teddy-card">
                 <div class="teddy-card-icon teddy-card-icon-1">
-                  <img src="https://69e65bf0643d4ec18925cb13.imgix.net/teddy.png" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover">
+                  <img src="/logos/meskuciai.jpeg" alt="" style="width:100%;height:100%;border-radius:50%;object-fit:cover">
                 </div>
                 <h3>Teminės Dekoracijos</h3>
                 <p>Meškučių tema su spalvingomis dekoracijomis, sukuriančiomis nepakartojamą atmosferą kiekvienam vaikui.</p>
@@ -404,8 +420,8 @@
             <!-- Form + image -->
             <div class="signup-wrapper" data-reveal style="--d:180ms">
               <div class="teddy-form-wrap">
-                <div class="teddy-form-title">Registracija</div>
-                <form class="signup-form teddy-form" name="meskuciai-registracija" method="POST" data-netlify="true">
+                <div class="teddy-form-title">Rezervacija</div>
+                <form class="signup-form teddy-form" name="meskuciai-registracija" method="POST">
                   <input type="hidden" name="form-name" value="meskuciai-registracija">
                   <div class="form-group">
                     <label for="t-name">Vaiko vardas</label>
@@ -440,8 +456,8 @@
                     <label for="t-comments">Komentarai / pageidavimai</label>
                     <input type="text" id="t-comments" name="comments" placeholder="Pvz., vaiko amžius, tema...">
                   </div>
-                  <button type="submit" class="teddy-submit-btn">Registruotis</button>
-                  <div class="form-success">Aciu! Susisieksime su jumis artimiausiu metu.</div>
+                  <button type="submit" class="teddy-submit-btn">Rezervuoti</button>
+                  <div class="form-success">Ačiū! Susisieksime su jumis artimiausiu metu.</div>
                 </form>
               </div>
               <div class="teddy-form-img">
@@ -453,10 +469,91 @@
       `;
     }
 
+    showPackagesPage() {
+      this.container.innerHTML = `
+        <section class="section inner-wrap" data-reveal style="--d: 140ms">
+          <h2 class="h2" style="margin:0">Gimtadienio paketai</h2>
+
+          <div style="margin: 0 0 20px;">
+            <a href="/" class="reg-btn" style="display: inline-flex; width: auto; margin-top: 0;">
+                ← Grįžti į pradžią
+            </a>
+          </div>
+
+          <p class="description">Pasirink šventės paketą pagal savo norus — nuo klasikinės šventės iki „viskas įskaičiuota". Kiekvienoje šventėje laukia privati erdvė, edukatorius ir pilna pramogų programa.</p>
+
+          <div class="packages-detail-grid">
+            <div class="package-detail" style="border-color:#c9803a">
+              <div class="package-detail-head package-bronze">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8M8 3l3.2 6M16 3l-3.2 6"/><circle cx="12" cy="14.5" r="5.5"/></svg>
+                <h3>Bronzinis</h3>
+              </div>
+              <div class="package-detail-plus">Į paketą įeina:</div>
+              <ul>
+                <li>Privati šventės erdvė tik jūsų šventei</li>
+                <li>Edukatorius, vedantis šventę nuo pradžios iki pabaigos</li>
+                <li>2 valandų šventė (iki 10 vaikų)</li>
+                <li>Daugiau nei 500 LEGO® modelių</li>
+                <li>Žaidimai ir kūrybinės užduotys</li>
+                <li>Skaitmeninis kvietimas</li>
+                <li>10–12 nuotraukų telefonu</li>
+                <li>Vanduo vaikams</li>
+                <li>Vaikų draudimas</li>
+              </ul>
+            </div>
+
+            <div class="package-detail" style="border-color:#9aa7b5">
+              <div class="package-detail-head package-silver">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M9 13.5 7.5 21l4.5-2.5L16.5 21 15 13.5"/></svg>
+                <h3>Sidabrinis</h3>
+              </div>
+              <div class="package-detail-plus">Viskas iš Bronzinio paketo, plius:</div>
+              <ul>
+                <li>Specialios teminės dekoracijos</li>
+                <li>Dovanėlės svečiams</li>
+                <li>Speciali dovana gimtadienio kaltininkui</li>
+                <li>Diplomas</li>
+                <li>Balionai</li>
+              </ul>
+            </div>
+
+            <div class="package-detail" style="border-color:#f2b01e">
+              <div class="package-detail-head package-gold">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17 3 8l5.5 4L12 5l3.5 7L21 8l-1 9z"/><path d="M5 20.5h14"/></svg>
+                <h3>Auksinis</h3>
+              </div>
+              <div class="package-detail-plus">Viskas iš Sidabrinio paketo, plius:</div>
+              <ul>
+                <li>Sultys</li>
+                <li>Vaisiai</li>
+                <li>Spragėsiai</li>
+              </ul>
+            </div>
+
+            <div class="package-detail" style="border-color:#4fc3f7">
+              <div class="package-detail-head package-diamond">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l4 6-9 12L3 9z"/><path d="M3 9h18"/><path d="M12 21 7.5 9M12 21l4.5-12"/></svg>
+                <h3>Deimantinis</h3>
+              </div>
+              <div class="package-detail-plus">Viskas iš Auksinio paketo, plius:</div>
+              <ul>
+                <li>Pica kiekvienam svečiui</li>
+                <li>Vienkartiniai indai</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <a href="/#contact" class="reg-btn">Rezervuoti šventę</a>
+          </div>
+        </section>
+      `;
+    }
+
     showExtrasPage() {
       this.container.innerHTML = `
         <section class="section inner-wrap" data-reveal style="--d: 140ms">
-          <h2 class="h2" style="margin:0;color: #E8181A;">Šventės Priedai ir Pramogos</h2>
+          <h2 class="h2" style="margin:0;color: #E8181A;">Šventės Pramogos</h2>
 
           <div style="margin: 0 0 20px;">
             <a href="/" class="reg-btn" style="display: inline-flex; width: auto; margin-top: 0;">
@@ -465,37 +562,40 @@
           </div>
 
           <div class="extras-hero">
-            <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins!<br><span style="font-size:0.55em;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų priedų kolekcijos</span></div>
+            <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins!<br><span style="font-size:0.55em;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų pramogų kolekcijos</span></div>
           </div>
 
           <div class="extras-grid-new">
             <div class="extra-card">
               <div class="extra-card-top extra-bg-1">
-                <img src="https://69e65bf0643d4ec18925cb13.imgix.net/lucid-origin_Include_no_text_this_will_be_used_for_a_business_in_the_Pinata_category_Pinata_p-0.jpg" alt="Pinata" class="extra-card-img">
+                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&h=400&fit=crop&auto=format" alt="Pinata" class="extra-card-img">
                 <h3 class="extra-card-name">Pinata</h3>
               </div>
               <div class="extra-card-body">Spalvinga pinata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems šventės dalyviams!</div>
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-2">
-                <img src="https://69e65bf0643d4ec18925cb13.imgix.net/Robloxas.png" alt="Animatorius" class="extra-card-img">
-                <h3 class="extra-card-name">Animatorius</h3>
+                <!-- TODO: pakeisti nuotrauką -->
+                <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=600&h=400&fit=crop&auto=format" alt="Veidų piešimas" class="extra-card-img">
+                <h3 class="extra-card-name">Veidų piešimas</h3>
               </div>
-              <div class="extra-card-body">Profesionalus animatorius, kuris vedė šventę ir žaidimų programą nuo pradžios iki pabaigos.</div>
+              <div class="extra-card-body">Profesionalus veidų piešimas — spalvingi piešiniai ant veidukų pagal šventės temą, džiuginantys kiekvieną vaiką.</div>
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-3">
-                <img src="https://69e65bf0643d4ec18925cb13.imgix.net/Fotke.jpg" alt="Fotosesija" class="extra-card-img">
-                <h3 class="extra-card-name">Fotosesija</h3>
+                <!-- TODO: pakeisti nuotrauką -->
+                <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=600&h=400&fit=crop&auto=format" alt="360 photo/selfie kamera" class="extra-card-img">
+                <h3 class="extra-card-name">360 photo/selfie kamera</h3>
               </div>
-              <div class="extra-card-body">Profesionali fotosesija su redakcija — nepamirštami prisiminimai visam gyvenimui.</div>
+              <div class="extra-card-body">Moderni 360 photo/selfie kamera — įspūdingi besisukantys vaizdo įrašai ir nuotraukos, kuriomis galėsite dalintis iškart po šventės.</div>
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-4">
-                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600&h=400&fit=crop&auto=format" alt="Pyragas" class="extra-card-img">
-                <h3 class="extra-card-name">Dekoruotas Pyragas</h3>
+                <!-- TODO: pakeisti nuotrauką -->
+                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600&h=400&fit=crop&auto=format" alt="Teminė dekoracija" class="extra-card-img">
+                <h3 class="extra-card-name">Teminė dekoracija</h3>
               </div>
-              <div class="extra-card-body">Specialiai pagamintas ir dekoruotas pyragas pagal pasirinktą šventės temą.</div>
+              <div class="extra-card-body">Šventės erdvės dekoravimas pagal pasirinktą temą — fonai, stalo dekoras ir akcentai, sukuriantys šventinę nuotaiką.</div>
             </div>
             <div class="extra-card">
               <div class="extra-card-top extra-bg-5">
@@ -514,7 +614,7 @@
           </div>
 
           <div class="cta-section">
-            <a href="/#contact" class="reg-btn">Pasirinkti Priedus</a>
+            <a href="/#contact" class="reg-btn">Registruokis ir pasirink pramogas</a>
           </div>
         </section>
       `;

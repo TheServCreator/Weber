@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "weber-gimtadieniai",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  // Nemokamas siuntimas veikia tik į patvirtintus Email Routing gavėjų adresus (Workers Free plane).
+  "send_email": [{ "name": "EMAIL" }],
+  "vars": {
+    // SENDER_ADDRESS domenas (topgimtadieniai.lt) turi būti prijungtas prie Cloudflare su įjungtu Email Routing.
+    "SENDER_ADDRESS": "forma@topgimtadieniai.lt",
+    // TODO: DESTINATION_ADDRESS turi būti patvirtintas kaip Email Routing "destination address"
+    // Cloudflare paskyroje (Email Routing -> Destination addresses -> Add address -> patvirtinti laišku).
+    "DESTINATION_ADDRESS": "info@steamedukacija.lt"
+  }
+}
