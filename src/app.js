@@ -328,6 +328,46 @@ import content from './data/content.json';
             </div>`).join('');
   }
 
+  function collectPramogos(form) {
+    return Array.from(form.querySelectorAll('input[name="pramogos"]:checked'))
+      .map((el) => el.value)
+      .join(', ');
+  }
+
+  async function submitReservationForm(form) {
+    const successEl = form.querySelector('.form-success');
+    const payload = Object.fromEntries(new FormData(form).entries());
+    if (form.querySelector('input[name="pramogos"]')) {
+      payload.pramogos = collectPramogos(form);
+    }
+
+    try {
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || !result.ok) {
+        throw new Error(result.error || 'Nepavyko išsiųsti registracijos.');
+      }
+      form.reset();
+      if (successEl) {
+        successEl.classList.remove('is-error');
+        successEl.textContent = '✅ Ačiū! Rezervacija gauta. Laukite patvirtinimo el. paštu.';
+        successEl.style.display = 'block';
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch (err) {
+      if (successEl) {
+        successEl.classList.add('is-error');
+        successEl.textContent = `⚠️ ${err.message}`;
+        successEl.style.display = 'block';
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }
+
   function renderExtrasGrid() {
     return content.pramogos.map((p, i) => `
             <div class="extra-card">
@@ -380,25 +420,7 @@ import content from './data/content.json';
         if (teddyForm) {
           teddyForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const data = new FormData(teddyForm);
-            fetch('/api/rezervacija', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: new URLSearchParams(data).toString()
-            })
-            .then((res) => {
-              if (!res.ok) throw new Error('submit failed');
-              const success = document.querySelector('.form-success');
-              if (success) { success.style.display = 'block'; }
-              teddyForm.reset();
-            })
-            .catch(() => {
-              const mailto = `mailto:info@steamedukacija.lt?subject=Me%C5%A1ku%C4%8Di%C5%B3%20gimtadienis&body=` +
-                encodeURIComponent(
-                  `Vardas: ${data.get('name')}\nEl. paštas: ${data.get('email')}\nTelefonas: ${data.get('phone')}\nMiestas: ${data.get('city')}\nData: ${data.get('date')}\nSvečių skaičius: ${data.get('guests')}\nKomentarai: ${data.get('comments')}`
-                );
-              window.location.href = mailto;
-            });
+            submitReservationForm(teddyForm);
           });
         }
 
@@ -407,22 +429,7 @@ import content from './data/content.json';
         if (signupForm) {
           signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const data = new FormData(signupForm);
-            fetch('/api/rezervacija', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: new URLSearchParams(data).toString()
-            })
-            .then((res) => {
-              if (!res.ok) throw new Error('submit failed');
-              const success = document.querySelector('.form-success');
-              if (success) { success.style.display = 'block'; }
-              signupForm.reset();
-            })
-            .catch(() => {
-              const mailto = `mailto:info@steamedukacija.lt?subject=Gimtadienis`;
-              window.location.href = mailto;
-            });
+            submitReservationForm(signupForm);
           });
         }
       }, 0);
@@ -558,7 +565,7 @@ import content from './data/content.json';
               </div>
               <div class="reservation-notice">${content.contact.notice}</div>
               <button type="submit" class="reg-btn" style="width:100%;margin-top:8px">Rezervuoti</button>
-              <div class="form-success">Ačiū! Susisieksime su jumis artimiausiu metu.</div>
+              <div class="form-success"></div>
             </form>
             <div class="signup-image-wrap">
               <img src="https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F981c188440564f9ca66e89daf788983d?format=webp&width=800" alt="Birthday party" class="signup-image">
@@ -684,7 +691,7 @@ import content from './data/content.json';
                   </div>
                   <div class="reservation-notice">${content.contact.notice}</div>
                   <button type="submit" class="teddy-submit-btn">Rezervuoti</button>
-                  <div class="form-success">Ačiū! Susisieksime su jumis artimiausiu metu.</div>
+                  <div class="form-success"></div>
                 </form>
               </div>
               <div class="teddy-form-img">

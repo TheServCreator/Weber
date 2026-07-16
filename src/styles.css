@@ -347,6 +347,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 .form-group input,.form-group select{padding:12px;border:2px solid #ddd;border-radius:4px;font-size:15px;font-family:'Nunito',sans-serif;transition:all 200ms;background:#fff}
 .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--b4k-blue);box-shadow:0 0 0 3px rgba(0,98,204,.12)}
 .form-success{background:#e8f8ee;border:2px solid var(--b4k-green);border-radius:4px;padding:20px;text-align:center;font-weight:700;color:#007a30;font-size:16px;display:none}
+.form-success.is-error{background:#fdecea;border-color:#e8181a;color:#c0392b}
 .phone-note{font-family:'Poppins',sans-serif;font-weight:800;font-size:17px;color:var(--b4k-red);margin:14px 0 4px}
 .phone-note a{color:var(--b4k-red);text-decoration:none;white-space:nowrap}
 .phone-note a:hover{text-decoration:underline}

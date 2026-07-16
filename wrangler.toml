@@ -1,0 +1,10 @@
+name = "gimtadieniai"
+compatibility_date = "2025-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+# SMTP credentials must be set as ENCRYPTED secrets (not in this file):
+#   wrangler pages secret put SMTP_USERNAME --project-name <projektas>
+#   wrangler pages secret put SMTP_PASSWORD --project-name <projektas>
+# Or via Cloudflare dashboard: Workers & Pages → Settings →
+# Variables and Secrets → add SMTP_USERNAME and SMTP_PASSWORD as encrypted.

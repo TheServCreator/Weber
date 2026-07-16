@@ -4,7 +4,10 @@ backend:
   branch: main
   # Cloudflare Worker, tvarkantis GitHub prisijungimą. KOL KAS PLACEHOLDER —
   # pakeiskite pagal ADMIN-SETUP.md instrukciją.
-  base_url: https://REIKIA-PAKEISTI.workers.dev
+  base_url: https://sveltia-cms-auth.stovyklos.workers.dev/
+
+site_url: https://topgimtadieniai.lt
+display_url: https://topgimtadieniai.lt
 
 media_folder: public
 public_folder: /
