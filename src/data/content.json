@@ -1,0 +1,283 @@
+{
+  "header": {
+    "tagline": "Išsirink iš 25 Linksmų ir įtraukiančių gimtadienio švenčių",
+    "phone": "+370 650 50556",
+    "buttonText": "Rezervuoti"
+  },
+  "hero": {
+    "slides": [
+      {
+        "image": "/photos/hero-1-vaikai-prie-stalo.png",
+        "alt": "Vaikai kuria LEGO prie šventinio stalo",
+        "objectPosition": "center 45%",
+        "title": "Bricks4Kidz",
+        "sub": "Kūrybinga LEGO šventė vaikams"
+      },
+      {
+        "image": "/photos/hero-cukraus-vata-korekcija.png",
+        "alt": "Vaikai prie gimtadienio torto su žvakutėmis",
+        "objectPosition": "center 60%",
+        "title": "NEPAMIRŠTAMA ŠVENTĖ",
+        "sub": "Draugai dalijasi džiaugsmu"
+      },
+      {
+        "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=1600",
+        "alt": "Little Medical School party",
+        "objectPosition": "",
+        "title": "Little Medical School",
+        "sub": "Medicininė edukacija ir pramoga"
+      },
+      {
+        "image": "/photos/hero-sokiai-karaoke.png",
+        "alt": "Mergaitės dainuoja karaoke šventėje",
+        "objectPosition": "center 30%",
+        "title": "LINKSMOS PRAMOGOS",
+        "sub": "Nepamirštama šventė su draugais"
+      },
+      {
+        "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=1600",
+        "alt": "Bricks4Kidz workshop",
+        "objectPosition": "",
+        "title": "Bricks4Kidz",
+        "sub": "Nepamirštami LEGO momentai"
+      },
+      {
+        "image": "/photos/hero-tortas-nepamirstamas.png",
+        "alt": "Vaikai šoka diskotekoje su šviečiančiais žaislais",
+        "objectPosition": "center 40%",
+        "title": "ŠOKIŲ VAKARĖLIS",
+        "sub": "Muzika, šviesos ir geros emocijos"
+      },
+      {
+        "image": "/photos/hero-medicina-kostiumu.png",
+        "alt": "Vaikai su medicinos kostiumais šventėje",
+        "objectPosition": "center 35%",
+        "title": "Little Medical School",
+        "sub": "Smagi medicininė šventė"
+      }
+    ]
+  },
+  "partyCards": [
+    {
+      "title": "Bricks4Kidz",
+      "hint": "Kūrybinga LEGO šventė",
+      "link": "https://www.bricks4kidz.lt/gimtadienio-sventes/",
+      "images": [
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=800", "alt": "Lego building" },
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=800", "alt": "Building workshop" },
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=800", "alt": "Lego creation" }
+      ]
+    },
+    {
+      "title": "Little Medical School",
+      "hint": "Medicininė edukacija ir pramoga",
+      "link": "https://littlemedicalschool.com/lithuania/parties/",
+      "images": [
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800", "alt": "Medical roleplay" },
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=800", "alt": "Doctor training" },
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800", "alt": "Medical game" }
+      ]
+    },
+    {
+      "title": "Meškučių Gimtadienio Šventė",
+      "hint": "Įkvėpk Meškučiui gyvybę!",
+      "link": "/#teddy-birthdays",
+      "images": [
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fb1c4d2db544a48c6a3d2e75974aa9b70?format=webp&width=800", "alt": "Teddy bear doctor" },
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa9fb08ffa873450893193bd4b7ff5587?format=webp&width=800", "alt": "Teddy bear birthday" },
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F00aafa617b7347d6bea8c096685b6c07?format=webp&width=800", "alt": "Teddy bear party" }
+      ]
+    }
+  ],
+  "pramogos": [
+    {
+      "name": "Pinata",
+      "description": "Spalvinga pinata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems šventės dalyviams!",
+      "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176"
+    },
+    {
+      "name": "Veidų piešimas",
+      "description": "Profesionalus veidų piešimas — spalvingi piešiniai ant veidukų pagal šventės temą, džiuginantys kiekvieną vaiką.",
+      "image": "https://images.unsplash.com/photo-1472162072942-cd5147eb3902"
+    },
+    {
+      "name": "360 photo/selfie kamera",
+      "description": "Moderni 360 photo/selfie kamera — įspūdingi besisukantys vaizdo įrašai ir nuotraukos, kuriomis galėsite dalintis iškart po šventės.",
+      "image": "https://images.unsplash.com/photo-1554048612-b6a482bc67e5"
+    },
+    {
+      "name": "Teminė dekoracija",
+      "description": "Šventės erdvės dekoravimas pagal pasirinktą temą — fonai, stalo dekoras ir akcentai, sukuriantys šventinę nuotaiką.",
+      "image": "https://images.unsplash.com/photo-1535141192574-5d4897c12636"
+    },
+    {
+      "name": "Dovanų paketai",
+      "description": "Specialiai paruošti dovanų paketai kiekvienam svečiui — su siurprizais viduje!",
+      "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48"
+    },
+    {
+      "name": "Balionų dekoracija",
+      "description": "Nuostabūs balionų dekoracijos, figūros ir kompozicijos, kurios nustebins kiekvieną.",
+      "image": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d"
+    }
+  ],
+  "packages": [
+    {
+      "key": "bronze",
+      "name": "Bronzinis",
+      "hint": "Privati erdvė ir pilna šventės programa",
+      "plusLabel": "Į paketą įeina:",
+      "contents": [
+        "Privati šventės erdvė tik jūsų šventei",
+        "Edukatorius, vedantis šventę nuo pradžios iki pabaigos",
+        "2 valandų šventė (iki 10 vaikų)",
+        "Daugiau nei 500 LEGO® modelių",
+        "Žaidimai ir kūrybinės užduotys",
+        "Skaitmeninis kvietimas",
+        "10–12 nuotraukų telefonu",
+        "Vanduo vaikams",
+        "Vaikų draudimas"
+      ]
+    },
+    {
+      "key": "silver",
+      "name": "Sidabrinis",
+      "hint": "Šventė su teminėmis dekoracijomis ir dovanėlėmis",
+      "plusLabel": "Viskas iš Bronzinio paketo, plius:",
+      "contents": [
+        "Specialios teminės dekoracijos",
+        "Dovanėlės svečiams",
+        "Speciali dovana gimtadienio kaltininkui",
+        "Diplomas",
+        "Balionai"
+      ]
+    },
+    {
+      "key": "gold",
+      "name": "Auksinis",
+      "hint": "Šventė su vaišėmis kiekvienam svečiui",
+      "plusLabel": "Viskas iš Sidabrinio paketo, plius:",
+      "contents": [
+        "Sultys",
+        "Vaisiai",
+        "Spragėsiai"
+      ]
+    },
+    {
+      "key": "diamond",
+      "name": "Deimantinis",
+      "hint": "Viskas įskaičiuota — šventė be rūpesčių",
+      "plusLabel": "Viskas iš Auksinio paketo, plius:",
+      "contents": [
+        "Pica kiekvienam svečiui",
+        "Vienkartiniai indai"
+      ]
+    }
+  ],
+  "themes": [
+    {
+      "brand": "Little Medical School",
+      "themes": [
+        "Dantukų fėjos puota",
+        "Būsimojo veterinaro šventė",
+        "Gimtadienis gydytojo kabinete. Aš — gydytojas",
+        "Chirurgo vakarėlis",
+        "Nuotykiai tyrimų laboratorijoje",
+        "Medicinos detektyvų gimtadienis"
+      ]
+    },
+    {
+      "brand": "Bricks4Kidz",
+      "themes": [
+        "K-POP",
+        "Encanto",
+        "Barbės",
+        "Vienaragiai",
+        "Smurfai",
+        "Roblox",
+        "Fortnite",
+        "Minecraft",
+        "Frozen (Ledo šalis)",
+        "Star Wars (Kosmosas)",
+        "Pimpačkukai",
+        "Transportas",
+        "Dinozaurai",
+        "Lego Friends",
+        "Super Herojus",
+        "Haris Poteris",
+        "Lego Miestas",
+        "Nindžago",
+        "Pokemonai",
+        "Wednesday",
+        "Super Mario"
+      ]
+    },
+    {
+      "brand": "Meškučiai",
+      "themes": [
+        "Įkvėpk man gyvybę"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Vaiko gimtadienis su Bricks4Kidz buvo tiesiog stebuklingas! Visi vaikai buvo sužavėti LEGO kūryba, o animatoriai – nuostabūs. Tikrai rekomenduojame ir renkamės jus dar kartą!",
+      "author": "— Jūratė M., Vilnius"
+    },
+    {
+      "text": "Little Medical School šventė pralenkė visus mūsų lūkesčius. Dukra iki šiol pasakoja draugams apie savo medicininį gimtadienį. Profesionalu ir labai smagu!",
+      "author": "— Aurimas K., Kaunas"
+    },
+    {
+      "text": "Meškučių gimtadienio šventė buvo nuostabi! Kiekvienas vaikas galėjo įkvėpti savo meškučiui gyvybę – tai buvo labai jaudinanti akimirka. Ačiū už tokią patirtį!",
+      "author": "— Rasa V., Klaipėda"
+    },
+    {
+      "text": "Profesionalūs organizatoriai, puiki programa, laimingi vaikai. Ką daugiau norėti? Viskas buvo suorganizuota iki smulkmenų. Tikrai rekomenduojame!",
+      "author": "— Tomas A., Šiauliai"
+    }
+  ],
+  "contact": {
+    "phone": "+370 650 50556",
+    "email": "info@steamedukacija.lt",
+    "notice": "Laukite rezervacijos patvirtinimo el. paštu",
+    "reserveButtonText": "Rezervuoti Šventę"
+  },
+  "brandsFooter": [
+    {
+      "logo": "/logos/bricks4kidz.jpeg",
+      "logoAlt": "Bricks4Kidz",
+      "link": "https://www.bricks4kidz.lt/",
+      "socials": [
+        { "platform": "facebook", "url": "https://www.facebook.com/Bricks4KidzLietuva" },
+        { "platform": "instagram", "url": "https://www.instagram.com/bricks4kidzlietuva/" }
+      ]
+    },
+    {
+      "logo": "/logos/lms.jpeg",
+      "logoAlt": "Little Medical School",
+      "link": "https://littlemedicalschool.com/lithuania/",
+      "socials": [
+        { "platform": "facebook", "url": "https://www.facebook.com/LittlemedicalschoolLietuva" },
+        { "platform": "instagram", "url": "https://www.instagram.com/mazojimedicinosmokykla/" }
+      ]
+    },
+    {
+      "logo": "/logos/businesskids-round.jpeg",
+      "logoAlt": "Business Kids",
+      "link": "https://businesskids.lt/",
+      "socials": [
+        { "platform": "facebook", "url": "https://www.facebook.com/profile.php?id=61572094061392" }
+      ]
+    },
+    {
+      "logo": "/logos/meskuciai.jpeg",
+      "logoAlt": "Meškučiai",
+      "link": "https://www.facebook.com/profile.php?id=100064280611950",
+      "socials": [
+        { "platform": "facebook", "url": "https://www.facebook.com/profile.php?id=100064280611950" },
+        { "platform": "instagram", "url": "https://www.instagram.com/meskuciai_/" }
+      ]
+    }
+  ]
+}

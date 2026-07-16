@@ -1,4 +1,6 @@
-﻿(() => {
+import content from './data/content.json';
+
+(() => {
   const prefersReduced = () => {
     try {
       return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -6,6 +8,37 @@
       return false;
     }
   };
+
+  const PACKAGE_ICONS = {
+    bronze: '<path d="M8 3h8M8 3l3.2 6M16 3l-3.2 6"/><circle cx="12" cy="14.5" r="5.5"/>',
+    silver: '<circle cx="12" cy="9" r="5.5"/><path d="M9 13.5 7.5 21l4.5-2.5L16.5 21 15 13.5"/>',
+    gold: '<path d="M4 17 3 8l5.5 4L12 5l3.5 7L21 8l-1 9z"/><path d="M5 20.5h14"/>',
+    diamond: '<path d="M7 3h10l4 6-9 12L3 9z"/><path d="M3 9h18"/><path d="M12 21 7.5 9M12 21l4.5-12"/>'
+  };
+
+  const PACKAGE_BORDER_COLORS = {
+    bronze: '#c9803a',
+    silver: '#9aa7b5',
+    gold: '#f2b01e',
+    diamond: '#4fc3f7'
+  };
+
+  const PARTY_CARD_META = [
+    { cssClass: 'card-bricks4kidz', interval: 3000, ariaLabel: 'Bricks4Kidz carousel' },
+    { cssClass: 'card-medical', interval: 3500, ariaLabel: 'Medical school carousel' },
+    { cssClass: 'card-teddy', interval: 3200, ariaLabel: 'Teddy bears carousel' }
+  ];
+
+  const EXTRA_BG_CLASSES = ['extra-bg-1', 'extra-bg-2', 'extra-bg-3', 'extra-bg-4', 'extra-bg-5', 'extra-bg-6'];
+
+  const SOCIAL_ICONS = {
+    facebook: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+    instagram: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>'
+  };
+
+  const SOCIAL_LABELS = { facebook: 'Facebook', instagram: 'Instagram' };
+
+  const linkAttrs = (href) => (/^https?:\/\//.test(href) ? ' target="_blank" rel="noreferrer"' : '');
 
   class SimpleCarousel {
     constructor(root) {
@@ -180,11 +213,137 @@
     }
   }
 
+  function renderHeader() {
+    const taglineEl = document.querySelector('.header-tagline-text');
+    if (taglineEl) taglineEl.textContent = content.header.tagline;
+
+    const phoneEl = document.querySelector('.header-phone');
+    if (phoneEl) phoneEl.innerHTML = `<span class="header-phone-label">Teirautis telefonu:</span> ${content.header.phone}`;
+
+    const registerEl = document.querySelector('.nav-register');
+    if (registerEl) registerEl.textContent = content.header.buttonText;
+  }
+
+  function renderHeroSlides() {
+    return content.hero.slides.map((slide) => `
+            <div class="carousel__slide">
+              <img src="${slide.image}" alt="${slide.alt}" class="slide-img"${slide.objectPosition ? ` style="object-position:${slide.objectPosition}"` : ''}>
+              <div class="slide-overlay"><div class="slide-title">${slide.title}</div><div class="slide-sub">${slide.sub}</div></div>
+            </div>`).join('');
+  }
+
+  function renderPartyCards() {
+    return content.partyCards.map((card, i) => {
+      const meta = PARTY_CARD_META[i];
+      return `
+          <a class="card ${meta.cssClass}" href="${card.link}"${linkAttrs(card.link)}>
+            <div class="card-title">${card.title}</div>
+            <div class="card-carousel-wrap">
+              <div class="carousel carousel--card" data-autoplay="true" data-interval="${meta.interval}" aria-label="${meta.ariaLabel}">
+                <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+                <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+                <div class="carousel__viewport">
+                  <div class="carousel__track">
+                    ${card.images.map((img) => `<div class="carousel__slide"><img src="${img.image}" alt="${img.alt}" class="slide-img"></div>`).join('')}
+                  </div>
+                </div>
+                <div class="carousel__dots" aria-label="Carousel pagination"></div>
+              </div>
+            </div>
+            <div class="card-hint">${card.hint}</div>
+          </a>`;
+    }).join('');
+  }
+
+  function renderPramogosStrip() {
+    return content.pramogos.map((p) => `
+              <div class="extras-wide-item">
+                <img src="${p.image}?w=120&h=120&fit=crop&auto=format" alt="${p.name}" class="extras-wide-img">
+                <div class="extras-wide-label">${p.name}</div>
+              </div>`).join('');
+  }
+
+  function renderPackagesGrid() {
+    return content.packages.map((pkg) => `
+        <a href="/#birthday-packages" class="package-card package-${pkg.key}" aria-label="${pkg.name} gimtadienio paketas">
+          <div class="package-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PACKAGE_ICONS[pkg.key]}</svg>
+          </div>
+          <div class="package-name">${pkg.name}</div>
+          <div class="package-hint">${pkg.hint}</div>
+        </a>`).join('');
+  }
+
+  function renderTestimonials() {
+    return content.testimonials.map((t) => `
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"${t.text}"</p>
+          <div class="testimonial-author">${t.author}</div>
+        </div>`).join('');
+  }
+
+  function renderBrandsFooter() {
+    return content.brandsFooter.map((brand) => `
+        <div class="brand-col">
+          <a href="${brand.link}"${linkAttrs(brand.link)} class="brand-logo-link">
+            <img src="${brand.logo}" alt="${brand.logoAlt}" class="brand-logo-img">
+          </a>
+          <div class="brand-social-links">
+            ${brand.socials.map((s) => `<a href="${s.url}"${linkAttrs(s.url)} class="brand-social-link">
+              ${SOCIAL_ICONS[s.platform]}
+              ${SOCIAL_LABELS[s.platform]}
+            </a>`).join('')}
+          </div>
+        </div>`).join('');
+  }
+
+  function renderThemeOptions() {
+    return content.themes.map((group) => `
+                  <optgroup label="${group.brand}">
+                    ${group.themes.map((t) => `<option value="${t}">${t}</option>`).join('')}
+                  </optgroup>`).join('');
+  }
+
+  function renderPramogosCheckboxes() {
+    return content.pramogos.map((p) => `
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="${p.name}"> ${p.name}</label>`).join('');
+  }
+
+  function renderPaketasOptions() {
+    return content.packages.map((pkg) => `<option value="${pkg.name}">${pkg.name}</option>`).join('');
+  }
+
+  function renderPackagesDetailGrid() {
+    return content.packages.map((pkg) => `
+            <div class="package-detail" style="border-color:${PACKAGE_BORDER_COLORS[pkg.key]}">
+              <div class="package-detail-head package-${pkg.key}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PACKAGE_ICONS[pkg.key]}</svg>
+                <h3>${pkg.name}</h3>
+              </div>
+              <div class="package-detail-plus">${pkg.plusLabel}</div>
+              <ul>
+                ${pkg.contents.map((c) => `<li>${c}</li>`).join('')}
+              </ul>
+            </div>`).join('');
+  }
+
+  function renderExtrasGrid() {
+    return content.pramogos.map((p, i) => `
+            <div class="extra-card">
+              <div class="extra-card-top ${EXTRA_BG_CLASSES[i]}">
+                <img src="${p.image}?w=600&h=400&fit=crop&auto=format" alt="${p.name}" class="extra-card-img">
+                <h3 class="extra-card-name">${p.name}</h3>
+              </div>
+              <div class="extra-card-body">${p.description}</div>
+            </div>`).join('');
+  }
+
   class PageRouter {
     constructor() {
       this.container = document.querySelector('.container');
-      this.originalContent = this.container.innerHTML;
       window.addEventListener('hashchange', () => this.handleRoute());
+      renderHeader();
       this.handleRoute();
     }
 
@@ -270,14 +429,83 @@
     }
 
     showHomePage() {
-      this.container.innerHTML = this.originalContent;
+      this.container.innerHTML = `
+    <!-- HERO full width -->
+    <section class="hero-section" data-reveal style="--d:100ms">
+      <div class="carousel" data-autoplay="true" data-interval="4000" aria-label="Hero carousel">
+        <button class="carousel__btn carousel__btn--prev" aria-label="Previous slide">&#8249;</button>
+        <button class="carousel__btn carousel__btn--next" aria-label="Next slide">&#8250;</button>
+        <div class="carousel__viewport">
+          <div class="carousel__track">${renderHeroSlides()}
+          </div>
+        </div>
+        <div class="carousel__progress" aria-hidden="true"><div class="carousel__bar"></div></div>
+        <div class="carousel__dots" aria-label="Carousel pagination"></div>
+      </div>
+    </section>
+
+    <!-- PARTY OPTIONS -->
+    <section class="parties-section" data-reveal style="--d:160ms">
+      <div class="inner-wrap">
+
+        <!-- Top row: 3 cards -->
+        <div class="grid-top">${renderPartyCards()}
+        </div>
+
+        <!-- Bottom row: full-width extras -->
+        <div class="grid-bottom">
+          <a class="card card-extras card-extras-wide" href="/#birthday-extras">
+            <div class="card-title">Šventės Pramogos</div>
+            <div class="extras-wide-content">${renderPramogosStrip()}
+            </div>
+            <div class="card-hint">Padaryk savo šventę dar įsimintinesnę!</div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BIRTHDAY PACKAGES -->
+    <section class="packages-section inner-wrap" data-reveal style="--d:200ms">
+      <h2 class="h2">Gimtadienio paketai</h2>
+      <div class="packages-grid">${renderPackagesGrid()}
+      </div>
+      <div class="packages-cta">
+        <a href="/#birthday-packages" class="reg-btn">Pasirink gimtadienio paketą</a>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (no heading) -->
+    <section class="testimonials-section inner-wrap" data-reveal style="--d:240ms">
+      <div class="testimonials-grid">${renderTestimonials()}
+      </div>
+    </section>
+
+    <!-- CONTACT – horizontal -->
+    <section id="contact" class="contact-section inner-wrap" data-reveal style="--d:280ms">
+      <div class="contact-horizontal">
+        <div class="contact-label">Susisiekite su mumis</div>
+        <div class="contact-sep"></div>
+        <div class="contact-item"><strong>Telefonas:</strong> ${content.contact.phone}</div>
+        <div class="contact-sep"></div>
+        <div class="contact-item"><strong>El. paštas:</strong> ${content.contact.email}</div>
+        <a href="/#contact" class="reg-btn">${content.contact.reserveButtonText}</a>
+      </div>
+    </section>
+
+    <!-- BRANDS / LOGOS FOOTER -->
+    <section class="brands-section inner-wrap" data-reveal style="--d:320ms">
+      <div class="brands-grid">${renderBrandsFooter()}
+      </div>
+    </section>
+      `;
     }
 
     showSignupPage() {
       this.container.innerHTML = `
         <section class="section inner-wrap" data-reveal style="--d: 140ms">
           <h2 class="h2">Gimtadienio Rezervacija</h2>
-          <div class="phone-note">Teirautis telefonu: <a href="tel:+37065050556">+370 650 50556</a></div>
+          <div class="phone-note">Teirautis telefonu: <a href="tel:${content.contact.phone.replace(/\s+/g, '')}">${content.contact.phone}</a></div>
           <div class="signup-wrapper">
             <form class="signup-form" name="gimtadienis-registracija" method="POST">
               <input type="hidden" name="form-name" value="gimtadienis-registracija">
@@ -312,25 +540,23 @@
               </div>
               <div class="form-group">
                 <label>Pageidaujamos pramogos</label>
-                <div class="checkbox-group">
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Pinata"> Pinata</label>
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Veidų piešimas"> Veidų piešimas</label>
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="360 photo/selfie kamera"> 360 photo/selfie kamera</label>
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Teminė dekoracija"> Teminė dekoracija</label>
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Dovanų paketai"> Dovanų paketai</label>
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="Balionų dekoracija"> Balionų dekoracija</label>
+                <div class="checkbox-group">${renderPramogosCheckboxes()}
                 </div>
+              </div>
+              <div class="form-group">
+                <label for="tema">Tema</label>
+                <select id="tema" name="tema" required>
+                  <option value="" disabled selected>Pasirinkite temą</option>${renderThemeOptions()}
+                </select>
               </div>
               <div class="form-group">
                 <label for="paketas">Gimtadienio paketas</label>
                 <select id="paketas" name="paketas">
                   <option value="">Pasirinkite paketą</option>
-                  <option value="Bronzinis">Bronzinis</option>
-                  <option value="Sidabrinis">Sidabrinis</option>
-                  <option value="Auksinis">Auksinis</option>
-                  <option value="Deimantinis">Deimantinis</option>
+                  ${renderPaketasOptions()}
                 </select>
               </div>
+              <div class="reservation-notice">${content.contact.notice}</div>
               <button type="submit" class="reg-btn" style="width:100%;margin-top:8px">Rezervuoti</button>
               <div class="form-success">Ačiū! Susisieksime su jumis artimiausiu metu.</div>
             </form>
@@ -456,6 +682,7 @@
                     <label for="t-comments">Komentarai / pageidavimai</label>
                     <input type="text" id="t-comments" name="comments" placeholder="Pvz., vaiko amžius, tema...">
                   </div>
+                  <div class="reservation-notice">${content.contact.notice}</div>
                   <button type="submit" class="teddy-submit-btn">Rezervuoti</button>
                   <div class="form-success">Ačiū! Susisieksime su jumis artimiausiu metu.</div>
                 </form>
@@ -482,65 +709,7 @@
 
           <p class="description">Pasirink šventės paketą pagal savo norus — nuo klasikinės šventės iki „viskas įskaičiuota". Kiekvienoje šventėje laukia privati erdvė, edukatorius ir pilna pramogų programa.</p>
 
-          <div class="packages-detail-grid">
-            <div class="package-detail" style="border-color:#c9803a">
-              <div class="package-detail-head package-bronze">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8M8 3l3.2 6M16 3l-3.2 6"/><circle cx="12" cy="14.5" r="5.5"/></svg>
-                <h3>Bronzinis</h3>
-              </div>
-              <div class="package-detail-plus">Į paketą įeina:</div>
-              <ul>
-                <li>Privati šventės erdvė tik jūsų šventei</li>
-                <li>Edukatorius, vedantis šventę nuo pradžios iki pabaigos</li>
-                <li>2 valandų šventė (iki 10 vaikų)</li>
-                <li>Daugiau nei 500 LEGO® modelių</li>
-                <li>Žaidimai ir kūrybinės užduotys</li>
-                <li>Skaitmeninis kvietimas</li>
-                <li>10–12 nuotraukų telefonu</li>
-                <li>Vanduo vaikams</li>
-                <li>Vaikų draudimas</li>
-              </ul>
-            </div>
-
-            <div class="package-detail" style="border-color:#9aa7b5">
-              <div class="package-detail-head package-silver">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M9 13.5 7.5 21l4.5-2.5L16.5 21 15 13.5"/></svg>
-                <h3>Sidabrinis</h3>
-              </div>
-              <div class="package-detail-plus">Viskas iš Bronzinio paketo, plius:</div>
-              <ul>
-                <li>Specialios teminės dekoracijos</li>
-                <li>Dovanėlės svečiams</li>
-                <li>Speciali dovana gimtadienio kaltininkui</li>
-                <li>Diplomas</li>
-                <li>Balionai</li>
-              </ul>
-            </div>
-
-            <div class="package-detail" style="border-color:#f2b01e">
-              <div class="package-detail-head package-gold">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17 3 8l5.5 4L12 5l3.5 7L21 8l-1 9z"/><path d="M5 20.5h14"/></svg>
-                <h3>Auksinis</h3>
-              </div>
-              <div class="package-detail-plus">Viskas iš Sidabrinio paketo, plius:</div>
-              <ul>
-                <li>Sultys</li>
-                <li>Vaisiai</li>
-                <li>Spragėsiai</li>
-              </ul>
-            </div>
-
-            <div class="package-detail" style="border-color:#4fc3f7">
-              <div class="package-detail-head package-diamond">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l4 6-9 12L3 9z"/><path d="M3 9h18"/><path d="M12 21 7.5 9M12 21l4.5-12"/></svg>
-                <h3>Deimantinis</h3>
-              </div>
-              <div class="package-detail-plus">Viskas iš Auksinio paketo, plius:</div>
-              <ul>
-                <li>Pica kiekvienam svečiui</li>
-                <li>Vienkartiniai indai</li>
-              </ul>
-            </div>
+          <div class="packages-detail-grid">${renderPackagesDetailGrid()}
           </div>
 
           <div class="cta-section">
@@ -565,52 +734,7 @@
             <div class="extras-hero-text">Sukurk šventę, kurią visi prisimins!<br><span style="font-size:0.55em;font-weight:700;opacity:.9">Pasirink iš mūsų spalvingų pramogų kolekcijos</span></div>
           </div>
 
-          <div class="extras-grid-new">
-            <div class="extra-card">
-              <div class="extra-card-top extra-bg-1">
-                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&h=400&fit=crop&auto=format" alt="Pinata" class="extra-card-img">
-                <h3 class="extra-card-name">Pinata</h3>
-              </div>
-              <div class="extra-card-body">Spalvinga pinata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems šventės dalyviams!</div>
-            </div>
-            <div class="extra-card">
-              <div class="extra-card-top extra-bg-2">
-                <!-- TODO: pakeisti nuotrauką -->
-                <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=600&h=400&fit=crop&auto=format" alt="Veidų piešimas" class="extra-card-img">
-                <h3 class="extra-card-name">Veidų piešimas</h3>
-              </div>
-              <div class="extra-card-body">Profesionalus veidų piešimas — spalvingi piešiniai ant veidukų pagal šventės temą, džiuginantys kiekvieną vaiką.</div>
-            </div>
-            <div class="extra-card">
-              <div class="extra-card-top extra-bg-3">
-                <!-- TODO: pakeisti nuotrauką -->
-                <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=600&h=400&fit=crop&auto=format" alt="360 photo/selfie kamera" class="extra-card-img">
-                <h3 class="extra-card-name">360 photo/selfie kamera</h3>
-              </div>
-              <div class="extra-card-body">Moderni 360 photo/selfie kamera — įspūdingi besisukantys vaizdo įrašai ir nuotraukos, kuriomis galėsite dalintis iškart po šventės.</div>
-            </div>
-            <div class="extra-card">
-              <div class="extra-card-top extra-bg-4">
-                <!-- TODO: pakeisti nuotrauką -->
-                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600&h=400&fit=crop&auto=format" alt="Teminė dekoracija" class="extra-card-img">
-                <h3 class="extra-card-name">Teminė dekoracija</h3>
-              </div>
-              <div class="extra-card-body">Šventės erdvės dekoravimas pagal pasirinktą temą — fonai, stalo dekoras ir akcentai, sukuriantys šventinę nuotaiką.</div>
-            </div>
-            <div class="extra-card">
-              <div class="extra-card-top extra-bg-5">
-                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=400&fit=crop&auto=format" alt="Dovanų paketai" class="extra-card-img">
-                <h3 class="extra-card-name">Dovanų Paketai</h3>
-              </div>
-              <div class="extra-card-body">Specialiai paruošti dovanų paketai kiekvienam svečiui — su siurprizais viduje!</div>
-            </div>
-            <div class="extra-card">
-              <div class="extra-card-top extra-bg-6">
-                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=400&fit=crop&auto=format" alt="Balionai" class="extra-card-img">
-                <h3 class="extra-card-name">Balionų Dekoracija</h3>
-              </div>
-              <div class="extra-card-body">Nuostabūs balionų dekoracijos, figūros ir kompozicijos, kurios nustebins kiekvieną.</div>
-            </div>
+          <div class="extras-grid-new">${renderExtrasGrid()}
           </div>
 
           <div class="cta-section">
