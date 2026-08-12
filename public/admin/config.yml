@@ -51,6 +51,15 @@ collections:
                   - { label: Nuotraukos aprašymas (prieinamumui), name: alt, widget: string, hint: "Trumpai aprašykite, kas matoma nuotraukoje." }
                   - { label: Antraštė, name: title, widget: string }
                   - { label: Paantraštė, name: sub, widget: string }
+                  - label: "Rodyti visą nuotrauką (neapkirptą)"
+                    name: blurFill
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: >
+                      Įjunkite, jei nuotrauka per siaura karuselei ir apkirpus nukertami veidai —
+                      tada nuotrauka rodoma visa, o šonus užpildo padidinta neryški tos pačios
+                      nuotraukos kopija. Įjungus, apkirpimo pozicija (žemiau) neveikia.
                   - label: "Sistemos raktas — NEKEISTI be reikalo"
                     name: objectPosition
                     widget: string
@@ -84,18 +93,30 @@ collections:
             widget: list
             collapsed: true
             summary: '{{fields.name}}'
-            description: "Šis sąrašas naudojamas ir pagrindinio puslapio juostoje, ir 'Šventės Pramogos' puslapyje."
+            description: "Šis sąrašas naudojamas ir pagrindinio puslapio bloke 'Šventės pramogos', ir 'Šventės Pramogos' puslapyje, ir rezervacijos formos varnelėse."
             fields:
               - { label: Pavadinimas, name: name, widget: string }
               - { label: Aprašymas, name: description, widget: text }
-              - { label: Nuotrauka, name: image, widget: image }
+              - label: Ikona
+                name: image
+                widget: image
+                hint: "PNG su permatomu fonu, kvadratinė (pvz. 1024×1024). Rodoma be apkirpimo."
+              - label: "Kaina / pastaba"
+                name: priceNote
+                widget: string
+                required: false
+                hint: "Kaina arba pastaba, rodoma šalia pramogos pavadinimo. Pvz. '30 EUR' arba 'nemokama standartinė'."
 
           - label: Gimtadienio paketai
             name: packages
             widget: list
             collapsed: true
             summary: '{{fields.name}}'
-            description: "Paketai rodomi ir pagrindiniame puslapyje, ir 'Gimtadienio paketai' puslapyje."
+            description: >
+              Paketai rodomi pagrindiniame puslapyje, 'Gimtadienio paketai' puslapyje ir rezervacijos
+              formos sąraše. SVARBU: 'Ką apima paketas' laukelyje rašykite TIK tuos punktus, kurių
+              nėra ankstesniuose paketuose — svetainė automatiškai prideda visų žemesnių paketų
+              punktus, kad kiekvienas paketas rodytų pilną sąrašą.
             fields:
               - label: "Sistemos raktas — NEKEISTI"
                 name: key
@@ -108,14 +129,34 @@ collections:
                   - { label: "Deimantinis (mėlyna spalva)", value: diamond }
               - { label: Pavadinimas, name: name, widget: string }
               - { label: "Trumpas aprašymas (pagrindiniame puslapyje)", name: hint, widget: string }
-              - label: "Įžanga prieš sąrašą (paketo puslapyje)"
-                name: plusLabel
+              - label: Kaina
+                name: price
                 widget: string
-                hint: "Pvz. 'Į paketą įeina:' arba 'Viskas iš Bronzinio paketo, plius:'"
-              - label: "Ką apima paketas"
+                required: false
+                hint: "Formatas: 'I–IV 180 EUR / V–VII 200 EUR'. Rodoma paketų kortelėse, paketų puslapyje ir rezervacijos formos sąraše."
+              - label: "Ką apima paketas (tik nauji punktai)"
                 name: contents
                 widget: list
-                hint: "Kiekviena eilutė — vienas punktas paketo sąraše."
+                hint: >
+                  Kiekviena eilutė — vienas punktas. Rašykite tik tai, ko nėra žemesniuose paketuose —
+                  svetainė pati prideda visus ankstesnių paketų punktus. PATIKRINTI: Auksinio paketo
+                  sąrašas gali būti nepilnas (Sultys, Vaisiai, Spragėsiai) — patvirtinkite arba papildykite.
+
+          - label: Miestai (rezervacijos formoms)
+            name: cities
+            widget: list
+            collapsed: true
+            summary: '{{fields.label}}'
+            description: "Miestų sąrašas abiejose rezervacijos formose. Vilniuje yra dvi erdvės, todėl jos nurodomos atskirai su adresais."
+            fields:
+              - label: "Sistemos raktas — NEKEISTI be reikalo"
+                name: value
+                widget: string
+                hint: "Techninis raktas be lietuviškų raidžių ir tarpų, pvz. 'vilnius-gabijos'."
+              - label: "Pavadinimas (rodomas formoje ir siunčiamas el. paštu)"
+                name: label
+                widget: string
+                hint: "Pvz. 'Vilnius — Gabijos g. 40'."
 
           - label: Temos (rezervacijos formai)
             name: themes
@@ -152,6 +193,17 @@ collections:
               - { label: Pranešimas po rezervacijos, name: notice, widget: string, hint: "Rodomas po 'Rezervuoti' mygtuko rezervacijos formose." }
               - { label: "Mygtuko tekstas ('Susisiekite su mumis' sekcijoje)", name: reserveButtonText, widget: string }
 
+          - label: Puslapio apačia (autorinės teisės)
+            name: footer
+            widget: object
+            summary: "Copyright eilutė po prekių ženklų blokais"
+            fields:
+              - { label: "Autorinių teisių eilutė", name: copyright, widget: string, hint: "Pvz. '© 2026 Top Gimtadieniai. Visos teisės saugomos.'" }
+              - { label: "Tekstas prieš nuorodą", name: creditPrefix, widget: string, hint: "Pvz. 'Svetainę sukūrė'." }
+              - { label: "Nuorodos tekstas", name: creditLinkText, widget: string }
+              - { label: "Tekstas po nuorodos", name: creditSuffix, widget: string }
+              - { label: "Nuorodos adresas", name: creditUrl, widget: string, hint: "Svetainės kūrėjo nuoroda — netrinti." }
+
           - label: Poraštės prekių ženklai
             name: brandsFooter
             widget: list
@@ -171,8 +223,9 @@ collections:
                   - label: "Sistemos raktas — NEKEISTI"
                     name: platform
                     widget: select
-                    hint: "Nustato, kuri ikona (Facebook/Instagram) bus rodoma."
+                    hint: "Nustato, kuri ikona (Facebook/Instagram/TikTok) bus rodoma."
                     options:
                       - { label: Facebook, value: facebook }
                       - { label: Instagram, value: instagram }
-                  - { label: Nuoroda, name: url, widget: string }
+                      - { label: TikTok, value: tiktok }
+                  - { label: Nuoroda, name: url, widget: string, hint: "Jei prekių ženklas neturi šio tinklo — ištrinkite visą įrašą, nepalikite tuščio." }

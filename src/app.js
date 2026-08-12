@@ -33,10 +33,15 @@ import content from './data/content.json';
 
   const SOCIAL_ICONS = {
     facebook: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
-    instagram: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>'
+    instagram: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>',
+    tiktok: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.05-2.82h-3.2v12.2a2.6 2.6 0 0 1-2.6 2.56 2.6 2.6 0 0 1 0-5.2c.27 0 .53.04.78.12v-3.3a5.9 5.9 0 0 0-.78-.05A5.83 5.83 0 0 0 3.9 15.2 5.83 5.83 0 0 0 9.75 21a5.83 5.83 0 0 0 5.85-5.8V9.01a7.53 7.53 0 0 0 4.4 1.4V7.24a4.3 4.3 0 0 1-3.4-1.42z"/></svg>'
   };
 
-  const SOCIAL_LABELS = { facebook: 'Facebook', instagram: 'Instagram' };
+  const SOCIAL_LABELS = { facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok' };
+
+  // Kaina rašoma skliaustuose („Pinjata (30 EUR)"), pastaba — po brūkšnio
+  // („Veidų piešimas — arba tatuiruotės (nemokama)").
+  const priceNoteSuffix = (priceNote) => (/^\d/.test(priceNote) ? `(${priceNote})` : `— ${priceNote}`);
 
   const linkAttrs = (href) => (/^https?:\/\//.test(href) ? ' target="_blank" rel="noreferrer"' : '');
 
@@ -225,11 +230,21 @@ import content from './data/content.json';
   }
 
   function renderHeroSlides() {
-    return content.hero.slides.map((slide) => `
-            <div class="carousel__slide">
-              <img src="${slide.image}" alt="${slide.alt}" class="slide-img"${slide.objectPosition ? ` style="object-position:${slide.objectPosition}"` : ''}>
+    return content.hero.slides.map((slide) => {
+      // blurFill: nuotrauka rodoma visa, neapkirpta, o šonai užpildomi
+      // padidinta ir neryškia tos pačios nuotraukos kopija.
+      const bg = slide.blurFill
+        ? `<img src="${slide.image}" alt="" aria-hidden="true" class="slide-img-bg">`
+        : '';
+      const pos = !slide.blurFill && slide.objectPosition
+        ? ` style="object-position:${slide.objectPosition}"`
+        : '';
+      return `
+            <div class="carousel__slide${slide.blurFill ? ' carousel__slide--blurfill' : ''}">
+              ${bg}<img src="${slide.image}" alt="${slide.alt}" class="slide-img"${pos}>
               <div class="slide-overlay"><div class="slide-title">${slide.title}</div><div class="slide-sub">${slide.sub}</div></div>
-            </div>`).join('');
+            </div>`;
+    }).join('');
   }
 
   function renderPartyCards() {
@@ -257,10 +272,11 @@ import content from './data/content.json';
 
   function renderPramogosStrip() {
     return content.pramogos.map((p) => `
-              <div class="extras-wide-item">
-                <img src="${p.image}?w=120&h=120&fit=crop&auto=format" alt="${p.name}" class="extras-wide-img">
-                <div class="extras-wide-label">${p.name}</div>
-              </div>`).join('');
+                <div class="extras-wide-item">
+                  <img src="${p.image}" alt="${p.name}" class="extras-wide-img" loading="lazy">
+                  <div class="extras-wide-label">${p.name}</div>
+                  ${p.priceNote ? `<div class="extras-wide-price">${p.priceNote}</div>` : ''}
+                </div>`).join('');
   }
 
   function renderPackagesGrid() {
@@ -270,6 +286,7 @@ import content from './data/content.json';
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PACKAGE_ICONS[pkg.key]}</svg>
           </div>
           <div class="package-name">${pkg.name}</div>
+          ${pkg.price ? `<div class="package-price">${pkg.price}</div>` : ''}
           <div class="package-hint">${pkg.hint}</div>
         </a>`).join('');
   }
@@ -290,12 +307,25 @@ import content from './data/content.json';
             <img src="${brand.logo}" alt="${brand.logoAlt}" class="brand-logo-img">
           </a>
           <div class="brand-social-links">
-            ${brand.socials.map((s) => `<a href="${s.url}"${linkAttrs(s.url)} class="brand-social-link">
+            ${brand.socials.filter((s) => s.url && SOCIAL_ICONS[s.platform]).map((s) => `<a href="${s.url}"${linkAttrs(s.url)} class="brand-social-link" aria-label="${brand.logoAlt} ${SOCIAL_LABELS[s.platform]}">
               ${SOCIAL_ICONS[s.platform]}
-              ${SOCIAL_LABELS[s.platform]}
+              <span>${SOCIAL_LABELS[s.platform]}</span>
             </a>`).join('')}
           </div>
         </div>`).join('');
+  }
+
+  function renderFooterCredit() {
+    const f = content.footer;
+    return `
+        <div class="site-credits">
+          <div class="site-copyright">${f.copyright}</div>
+          <div class="site-credit-line">${f.creditPrefix} <a href="${f.creditUrl}" target="_blank" rel="noreferrer">${f.creditLinkText}</a> ${f.creditSuffix}</div>
+        </div>`;
+  }
+
+  function renderCityOptions() {
+    return content.cities.map((c) => `<option value="${c.value}">${c.label}</option>`).join('');
   }
 
   function renderThemeOptions() {
@@ -307,23 +337,30 @@ import content from './data/content.json';
 
   function renderPramogosCheckboxes() {
     return content.pramogos.map((p) => `
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="${p.name}"> ${p.name}</label>`).join('');
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="${p.name}"> <span>${p.name}${p.priceNote ? ` <span class="checkbox-price">${priceNoteSuffix(p.priceNote)}</span>` : ''}</span></label>`).join('');
   }
 
   function renderPaketasOptions() {
-    return content.packages.map((pkg) => `<option value="${pkg.name}">${pkg.name}</option>`).join('');
+    return content.packages.map((pkg) => `<option value="${pkg.name}">${pkg.price ? `${pkg.name} — ${pkg.price}` : pkg.name}</option>`).join('');
+  }
+
+  // Kiekvienas paketas rodo PILNĄ sąrašą: JSON'e laikomi tik unikalūs punktai,
+  // o čia jie sudedami kaskadiškai su visais ankstesnių paketų punktais.
+  function cumulativeContents(index) {
+    return content.packages.slice(0, index + 1).flatMap((pkg) => pkg.contents);
   }
 
   function renderPackagesDetailGrid() {
-    return content.packages.map((pkg) => `
+    return content.packages.map((pkg, i) => `
             <div class="package-detail" style="border-color:${PACKAGE_BORDER_COLORS[pkg.key]}">
               <div class="package-detail-head package-${pkg.key}">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PACKAGE_ICONS[pkg.key]}</svg>
                 <h3>${pkg.name}</h3>
+                ${pkg.price ? `<div class="package-detail-price">${pkg.price}</div>` : ''}
               </div>
-              <div class="package-detail-plus">${pkg.plusLabel}</div>
+              <div class="package-detail-plus">Į paketą įeina:</div>
               <ul>
-                ${pkg.contents.map((c) => `<li>${c}</li>`).join('')}
+                ${cumulativeContents(i).map((c) => `<li>${c}</li>`).join('')}
               </ul>
             </div>`).join('');
   }
@@ -340,6 +377,9 @@ import content from './data/content.json';
     if (form.querySelector('input[name="pramogos"]')) {
       payload.pramogos = collectPramogos(form);
     }
+    // El. paštu siunčiamas pilnas miesto pavadinimas su adresu, ne sistemos raktas.
+    const city = content.cities.find((c) => c.value === payload.city);
+    if (city) payload.city = city.label;
 
     try {
       const res = await fetch('/api/register', {
@@ -372,8 +412,8 @@ import content from './data/content.json';
     return content.pramogos.map((p, i) => `
             <div class="extra-card">
               <div class="extra-card-top ${EXTRA_BG_CLASSES[i]}">
-                <img src="${p.image}?w=600&h=400&fit=crop&auto=format" alt="${p.name}" class="extra-card-img">
-                <h3 class="extra-card-name">${p.name}</h3>
+                <img src="${p.image}" alt="${p.name}" class="extra-card-img" loading="lazy">
+                <h3 class="extra-card-name">${p.name}${p.priceNote ? `<span class="extra-card-price">${p.priceNote}</span>` : ''}</h3>
               </div>
               <div class="extra-card-body">${p.description}</div>
             </div>`).join('');
@@ -461,12 +501,15 @@ import content from './data/content.json';
 
         <!-- Bottom row: full-width extras -->
         <div class="grid-bottom">
-          <a class="card card-extras card-extras-wide" href="/#birthday-extras">
-            <div class="card-title">Šventės Pramogos</div>
-            <div class="extras-wide-content">${renderPramogosStrip()}
+          <div class="extras-block">
+            <h2 class="h2 h2--red">Šventės pramogos</h2>
+            <p class="extras-block-sub">Pasirink pramogą ir padaryk šventę dar įsimintinesnę.</p>
+            <div class="card card-extras card-extras-wide card--static">
+              <div class="extras-wide-content">${renderPramogosStrip()}
+              </div>
             </div>
-            <div class="card-hint">Padaryk savo šventę dar įsimintinesnę!</div>
-          </a>
+            <div class="extras-block-note">gali būti taikomas papildomas mokestis</div>
+          </div>
         </div>
 
       </div>
@@ -493,9 +536,9 @@ import content from './data/content.json';
       <div class="contact-horizontal">
         <div class="contact-label">Susisiekite su mumis</div>
         <div class="contact-sep"></div>
-        <div class="contact-item"><strong>Telefonas:</strong> ${content.contact.phone}</div>
+        <div class="contact-item"><strong>Telefonas:</strong> <a href="tel:${content.contact.phone.replace(/\s+/g, '')}" class="contact-link">${content.contact.phone}</a></div>
         <div class="contact-sep"></div>
-        <div class="contact-item"><strong>El. paštas:</strong> ${content.contact.email}</div>
+        <div class="contact-item"><strong>El. paštas:</strong> <a href="mailto:${content.contact.email}" class="contact-link">${content.contact.email}</a></div>
         <a href="/#contact" class="reg-btn">${content.contact.reserveButtonText}</a>
       </div>
     </section>
@@ -503,7 +546,7 @@ import content from './data/content.json';
     <!-- BRANDS / LOGOS FOOTER -->
     <section class="brands-section inner-wrap" data-reveal style="--d:320ms">
       <div class="brands-grid">${renderBrandsFooter()}
-      </div>
+      </div>${renderFooterCredit()}
     </section>
       `;
     }
@@ -531,10 +574,7 @@ import content from './data/content.json';
               <div class="form-group">
                 <label for="city">Miestas</label>
                 <select id="city" name="city" required>
-                  <option value="">Pasirinkite miestą</option>
-                  <option value="vilnius">Vilnius</option>
-                  <option value="kaunas">Kaunas</option>
-                  <option value="klaipeda">Klaipėda</option>
+                  <option value="">Pasirinkite miestą</option>${renderCityOptions()}
                 </select>
               </div>
               <div class="form-group">
@@ -546,7 +586,7 @@ import content from './data/content.json';
                 <input type="number" id="guests" name="guests" min="1" required>
               </div>
               <div class="form-group">
-                <label>Pageidaujamos pramogos</label>
+                <label>Pageidaujamos pramogos <span class="label-note">(gali būti taikomas papildomas mokestis)</span></label>
                 <div class="checkbox-group">${renderPramogosCheckboxes()}
                 </div>
               </div>
@@ -671,10 +711,7 @@ import content from './data/content.json';
                   <div class="form-group">
                     <label for="t-city">Miestas</label>
                     <select id="t-city" name="city" required>
-                      <option value="">Pasirinkite miestą</option>
-                      <option value="vilnius">Vilnius</option>
-                      <option value="kaunas">Kaunas</option>
-                      <option value="klaipeda">Klaipėda</option>
+                      <option value="">Pasirinkite miestą</option>${renderCityOptions()}
                     </select>
                   </div>
                   <div class="form-group">

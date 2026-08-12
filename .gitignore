@@ -1,0 +1,21 @@
+# Priklausomybės
+node_modules/
+
+# Build'as (Cloudflare Pages build'ina pats)
+dist/
+
+# Lokalus Wrangler / Miniflare cache
+.wrangler/
+
+# Aplinkos kintamieji
+.env
+.env.*
+!.env.example
+
+# OS / redaktorių šiukšlės
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.vscode/
+.idea/

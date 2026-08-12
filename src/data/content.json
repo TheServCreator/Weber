@@ -7,51 +7,42 @@
   "hero": {
     "slides": [
       {
-        "image": "/photos/hero-1-vaikai-prie-stalo.png",
-        "alt": "Vaikai kuria LEGO prie šventinio stalo",
-        "objectPosition": "center 45%",
+        "image": "/photos/hero-lego-stalas.jpg",
+        "alt": "Vaikai ir tėvai kuria bendrą LEGO maketą prie šventinio stalo",
+        "objectPosition": "",
+        "blurFill": true,
         "title": "Bricks4Kidz",
         "sub": "Kūrybinga LEGO šventė vaikams"
       },
       {
-        "image": "/photos/hero-cukraus-vata-korekcija.png",
-        "alt": "Vaikai prie gimtadienio torto su žvakutėmis",
-        "objectPosition": "center 60%",
+        "image": "/photos/hero-balionai-diplomai.jpg",
+        "alt": "Vaikai su balionais ir diplomais Bricks4Kidz šventėje",
+        "objectPosition": "center 35%",
+        "blurFill": false,
         "title": "NEPAMIRŠTAMA ŠVENTĖ",
         "sub": "Draugai dalijasi džiaugsmu"
       },
       {
-        "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=1600",
-        "alt": "Little Medical School party",
-        "objectPosition": "",
-        "title": "Little Medical School",
-        "sub": "Medicininė edukacija ir pramoga"
-      },
-      {
-        "image": "/photos/hero-sokiai-karaoke.png",
-        "alt": "Mergaitės dainuoja karaoke šventėje",
+        "image": "/photos/hero-karaoke.jpg",
+        "alt": "Dvi mergaitės dainuoja karaoke gimtadienio šventėje",
         "objectPosition": "center 30%",
+        "blurFill": false,
         "title": "LINKSMOS PRAMOGOS",
         "sub": "Nepamirštama šventė su draugais"
       },
       {
-        "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=1600",
-        "alt": "Bricks4Kidz workshop",
-        "objectPosition": "",
-        "title": "Bricks4Kidz",
-        "sub": "Nepamirštami LEGO momentai"
-      },
-      {
-        "image": "/photos/hero-tortas-nepamirstamas.png",
-        "alt": "Vaikai šoka diskotekoje su šviečiančiais žaislais",
+        "image": "/photos/hero-sokiai-diskoteka.jpg",
+        "alt": "Vaikai šoka diskotekoje su šviečiančiomis apyrankėmis",
         "objectPosition": "center 40%",
+        "blurFill": false,
         "title": "ŠOKIŲ VAKARĖLIS",
         "sub": "Muzika, šviesos ir geros emocijos"
       },
       {
-        "image": "/photos/hero-medicina-kostiumu.png",
-        "alt": "Vaikai su medicinos kostiumais šventėje",
-        "objectPosition": "center 35%",
+        "image": "/photos/hero-lms-grupine.jpg",
+        "alt": "Little Medical School šventės dalyvių grupinė nuotrauka",
+        "objectPosition": "center 70%",
+        "blurFill": false,
         "title": "Little Medical School",
         "sub": "Smagi medicininė šventė"
       }
@@ -63,9 +54,9 @@
       "hint": "Kūrybinga LEGO šventė",
       "link": "https://www.bricks4kidz.lt/gimtadienio-sventes/",
       "images": [
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fd1e1111e355a4c109d7d4269352c3237?format=webp&width=800", "alt": "Lego building" },
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F1b25b1968e7b4b5390625227fe4773a6?format=webp&width=800", "alt": "Building workshop" },
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F2697cd0f589d416a935dfc67d06c265b?format=webp&width=800", "alt": "Lego creation" }
+        { "image": "/photos/b4k-kit-8.jpg", "alt": "Vaikai kuria LEGO modelį Bricks4Kidz šventėje" },
+        { "image": "/photos/b4k-kit-13.jpg", "alt": "Vaikai su edukatore konstruoja LEGO mechanizmą" },
+        { "image": "/photos/b4k-lego-makete.jpg", "alt": "Vaikai kuria bendrą LEGO maketą" }
       ]
     },
     {
@@ -74,8 +65,7 @@
       "link": "https://littlemedicalschool.com/lithuania/parties/",
       "images": [
         { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800", "alt": "Medical roleplay" },
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=800", "alt": "Doctor training" },
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800", "alt": "Medical game" }
+        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Ff7b6d6767e664297a3451302434d1004?format=webp&width=800", "alt": "Doctor training" }
       ]
     },
     {
@@ -83,7 +73,7 @@
       "hint": "Įkvėpk Meškučiui gyvybę!",
       "link": "/#teddy-birthdays",
       "images": [
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fb1c4d2db544a48c6a3d2e75974aa9b70?format=webp&width=800", "alt": "Teddy bear doctor" },
+        { "image": "/photos/meskuciai-teddy.jpg", "alt": "Vaikai puošia savo meškučius per gimtadienio šventę" },
         { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa9fb08ffa873450893193bd4b7ff5587?format=webp&width=800", "alt": "Teddy bear birthday" },
         { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2F00aafa617b7347d6bea8c096685b6c07?format=webp&width=800", "alt": "Teddy bear party" }
       ]
@@ -91,34 +81,40 @@
   ],
   "pramogos": [
     {
-      "name": "Pinata",
-      "description": "Spalvinga pinata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems šventės dalyviams!",
-      "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176"
+      "name": "Pinjata",
+      "description": "Spalvinga pinjata, pilna saldžių dovanų ir surprizų. Garantuotas smagumas visiems šventės dalyviams!",
+      "image": "/pramogos/pinjata.png",
+      "priceNote": "30 EUR"
     },
     {
       "name": "Veidų piešimas",
       "description": "Profesionalus veidų piešimas — spalvingi piešiniai ant veidukų pagal šventės temą, džiuginantys kiekvieną vaiką.",
-      "image": "https://images.unsplash.com/photo-1472162072942-cd5147eb3902"
+      "image": "/pramogos/veidu-piesimas.png",
+      "priceNote": "arba tatuiruotės (nemokama)"
     },
     {
       "name": "360 photo/selfie kamera",
       "description": "Moderni 360 photo/selfie kamera — įspūdingi besisukantys vaizdo įrašai ir nuotraukos, kuriomis galėsite dalintis iškart po šventės.",
-      "image": "https://images.unsplash.com/photo-1554048612-b6a482bc67e5"
+      "image": "/pramogos/360-kamera.png",
+      "priceNote": "50 EUR"
     },
     {
       "name": "Teminė dekoracija",
       "description": "Šventės erdvės dekoravimas pagal pasirinktą temą — fonai, stalo dekoras ir akcentai, sukuriantys šventinę nuotaiką.",
-      "image": "https://images.unsplash.com/photo-1535141192574-5d4897c12636"
+      "image": "/pramogos/temine-dekoracija.png",
+      "priceNote": "nemokama su Sidabro ir aukštesniu paketu"
     },
     {
-      "name": "Dovanų paketai",
-      "description": "Specialiai paruošti dovanų paketai kiekvienam svečiui — su siurprizais viduje!",
-      "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48"
+      "name": "Lego žmogeliuko kūrimas",
+      "description": "Vaikai patys susikuria savo LEGO žmogeliuką ir pasiima jį namo kaip dovaną.",
+      "image": "/pramogos/lego-zmogeliukas.png",
+      "priceNote": "2 EUR / vnt"
     },
     {
       "name": "Balionų dekoracija",
       "description": "Nuostabūs balionų dekoracijos, figūros ir kompozicijos, kurios nustebins kiekvieną.",
-      "image": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d"
+      "image": "/pramogos/balionu-dekoracija.png",
+      "priceNote": "nemokama standartinė"
     }
   ],
   "packages": [
@@ -126,7 +122,7 @@
       "key": "bronze",
       "name": "Bronzinis",
       "hint": "Privati erdvė ir pilna šventės programa",
-      "plusLabel": "Į paketą įeina:",
+      "price": "I–IV 180 EUR / V–VII 200 EUR",
       "contents": [
         "Privati šventės erdvė tik jūsų šventei",
         "Edukatorius, vedantis šventę nuo pradžios iki pabaigos",
@@ -143,7 +139,7 @@
       "key": "silver",
       "name": "Sidabrinis",
       "hint": "Šventė su teminėmis dekoracijomis ir dovanėlėmis",
-      "plusLabel": "Viskas iš Bronzinio paketo, plius:",
+      "price": "I–IV 200 EUR / V–VII 220 EUR",
       "contents": [
         "Specialios teminės dekoracijos",
         "Dovanėlės svečiams",
@@ -156,7 +152,7 @@
       "key": "gold",
       "name": "Auksinis",
       "hint": "Šventė su vaišėmis kiekvienam svečiui",
-      "plusLabel": "Viskas iš Sidabrinio paketo, plius:",
+      "price": "I–IV 220 EUR / V–VII 240 EUR",
       "contents": [
         "Sultys",
         "Vaisiai",
@@ -167,12 +163,19 @@
       "key": "diamond",
       "name": "Deimantinis",
       "hint": "Viskas įskaičiuota — šventė be rūpesčių",
-      "plusLabel": "Viskas iš Auksinio paketo, plius:",
+      "price": "I–IV 280 EUR / V–VII 300 EUR",
       "contents": [
         "Pica kiekvienam svečiui",
         "Vienkartiniai indai"
       ]
     }
+  ],
+  "cities": [
+    { "value": "vilnius-gabijos", "label": "Vilnius — Gabijos g. 40" },
+    { "value": "vilnius-sakalu", "label": "Vilnius — Sakalų g. 6" },
+    { "value": "kaunas", "label": "Kaunas" },
+    { "value": "klaipeda", "label": "Klaipėda" },
+    { "value": "panevezys", "label": "Panevėžys" }
   ],
   "themes": [
     {
@@ -242,6 +245,13 @@
     "email": "info@steamedukacija.lt",
     "notice": "Laukite rezervacijos patvirtinimo el. paštu",
     "reserveButtonText": "Rezervuoti Šventę"
+  },
+  "footer": {
+    "copyright": "© 2026 Top Gimtadieniai. Visos teisės saugomos.",
+    "creditPrefix": "Svetainę sukūrė",
+    "creditLinkText": "WebSprendimas.lt",
+    "creditSuffix": "— svetainių kūrimas Kaune",
+    "creditUrl": "https://websprendimas.lt"
   },
   "brandsFooter": [
     {
