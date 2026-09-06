@@ -39,10 +39,6 @@ import content from './data/content.json';
 
   const SOCIAL_LABELS = { facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok' };
 
-  // Kaina rašoma skliaustuose („Pinjata (30 EUR)"), pastaba — po brūkšnio
-  // („Veidų piešimas — arba tatuiruotės (nemokama)").
-  const priceNoteSuffix = (priceNote) => (/^\d/.test(priceNote) ? `(${priceNote})` : `— ${priceNote}`);
-
   const linkAttrs = (href) => (/^https?:\/\//.test(href) ? ' target="_blank" rel="noreferrer"' : '');
 
   class SimpleCarousel {
@@ -337,7 +333,7 @@ import content from './data/content.json';
 
   function renderPramogosCheckboxes() {
     return content.pramogos.map((p) => `
-                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="${p.name}"> <span>${p.name}${p.priceNote ? ` <span class="checkbox-price">${priceNoteSuffix(p.priceNote)}</span>` : ''}</span></label>`).join('');
+                  <label class="checkbox-item"><input type="checkbox" name="pramogos" value="${p.name}"> <span>${p.name}${p.priceNote ? ` <span class="checkbox-price">${p.priceNote}</span>` : ''}</span></label>`).join('');
   }
 
   function renderPaketasOptions() {

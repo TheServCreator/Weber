@@ -105,7 +105,7 @@ collections:
                 name: priceNote
                 widget: string
                 required: false
-                hint: "Kaina arba pastaba, rodoma šalia pramogos pavadinimo. Pvz. '30 EUR' arba 'nemokama standartinė'."
+                hint: "Rodoma iškart po pramogos pavadinimo (be brūkšnelio), todėl rašykite taip, kad skaitytųsi kaip vientisas sakinys, o kainą dėkite į skliaustus. Pvz. '(30 EUR)' arba 'standartinė (nemokama)'."
 
           - label: Gimtadienio paketai
             name: packages

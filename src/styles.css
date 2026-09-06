@@ -144,7 +144,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   object-fit:contain;display:block;
 }
 .extras-wide-label{font-size:15px;font-weight:800;color:#333;text-align:center;font-family:'Poppins',sans-serif;line-height:1.25}
-.extras-wide-price{font-size:13px;font-weight:700;color:var(--b4k-red);text-align:center;line-height:1.3;margin-top:-4px}
+.extras-wide-price{font-size:13px;font-weight:600;color:#333;text-align:center;line-height:1.3;margin-top:-4px}
 @media(max-width:1000px){.extras-wide-content{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:520px){
   .extras-wide-content{grid-template-columns:repeat(2,1fr);gap:16px 12px}
@@ -326,7 +326,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
   font-family:'Poppins',sans-serif;font-size:18px;font-weight:800;
   margin:0;text-shadow:1px 1px 3px rgba(0,0,0,.4);
 }
-.extra-card-price{display:block;font-size:13px;font-weight:700;color:#ffd7d7;margin-top:2px;text-shadow:1px 1px 3px rgba(0,0,0,.5)}
+.extra-card-price{display:block;font-size:13px;font-weight:600;color:#fff;margin-top:2px;text-shadow:1px 1px 3px rgba(0,0,0,.5)}
 .extra-card-body{padding:14px 18px;background:#fff;font-size:13px;line-height:1.6;color:#444;font-weight:600;border-top:4px solid rgba(0,0,0,.08)}
 .extra-bg-1{background:var(--b4k-orange)}
 .extra-bg-2{background:var(--b4k-purple)}
@@ -407,7 +407,7 @@ body.loaded  [data-reveal]{opacity:1;transform:translateY(0);transition:opacity 
 .checkbox-group{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
 @media(max-width:480px){.checkbox-group{grid-template-columns:1fr}}
 .form-group .checkbox-item{display:flex;flex-direction:row;align-items:flex-start;gap:8px;margin:0;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px;color:#333;cursor:pointer;line-height:1.4}
-.checkbox-price{color:var(--b4k-red);font-weight:700;font-size:13px}
+.checkbox-price{color:#333;font-weight:600;font-size:13px}
 .label-note{font-weight:600;font-size:12px;color:#777;font-family:'Nunito',sans-serif}
 .checkbox-item input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin:1px 0 0;accent-color:var(--b4k-blue);cursor:pointer}
 .signup-image-wrap{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.14)}
