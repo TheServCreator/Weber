@@ -122,7 +122,7 @@
       "key": "bronze",
       "name": "Bronzinis",
       "hint": "Privati erdvė ir pilna šventės programa",
-      "price": "I–IV 180 EUR / V–VII 200 EUR",
+      "price": "I–IV 220 EUR / V–VII 240 EUR",
       "contents": [
         "Privati šventės erdvė tik jūsų šventei",
         "Edukatorius, vedantis šventę nuo pradžios iki pabaigos",
@@ -138,7 +138,7 @@
       "key": "silver",
       "name": "Sidabrinis",
       "hint": "Šventė su teminėmis dekoracijomis ir dovanėlėmis",
-      "price": "I–IV 200 EUR / V–VII 220 EUR",
+      "price": "I–IV 240 EUR / V–VII 260 EUR",
       "contents": [
         "Specialios teminės dekoracijos",
         "Dovanėlės svečiams",
@@ -151,7 +151,7 @@
       "key": "gold",
       "name": "Auksinis",
       "hint": "Šventė su vaišėmis kiekvienam svečiui",
-      "price": "I–IV 220 EUR / V–VII 240 EUR",
+      "price": "I–IV 270 EUR / V–VII 290 EUR",
       "contents": [
         "Sultys",
         "Vaisiai",
@@ -162,7 +162,7 @@
       "key": "diamond",
       "name": "Deimantinis",
       "hint": "Viskas įskaičiuota — šventė be rūpesčių",
-      "price": "I–IV 280 EUR / V–VII 300 EUR",
+      "price": "I–IV 380 EUR / V–VII 400 EUR",
       "contents": [
         "Pica",
         "Vienkartiniai indai"
