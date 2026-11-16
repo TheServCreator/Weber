@@ -133,7 +133,7 @@ collections:
                 name: price
                 widget: string
                 required: false
-                hint: "Formatas: 'I–IV 220–380 EUR / V–VII 240–400 EUR'. Rodoma paketų kortelėse, paketų puslapyje ir rezervacijos formos sąraše."
+                hint: "Formatas: 'I–IV 220 EUR / V–VII 240 EUR'. Rodoma paketų kortelėse, paketų puslapyje ir rezervacijos formos sąraše."
               - label: "Ką apima paketas (tik nauji punktai)"
                 name: contents
                 widget: list
