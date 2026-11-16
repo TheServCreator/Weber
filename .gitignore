@@ -10,6 +10,7 @@ dist/
 # Aplinkos kintamieji
 .env
 .env.*
+.dev.vars
 !.env.example
 
 # OS / redaktorių šiukšlės

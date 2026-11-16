@@ -797,6 +797,12 @@ import content from './data/content.json';
       body.classList.add('loaded');
     }
 
-    new PageRouter();
+    const router = new PageRouter();
+
+    // /redaktorius — password-protected visual editor. Loaded on demand so the
+    // visitor bundle only carries this check and the dynamic import.
+    if (/^\/redaktorius\/?$/.test(window.location.pathname)) {
+      import('./editor/index.js').then((m) => m.startEditor({ content, router, renderHeader }));
+    }
   });
 })();

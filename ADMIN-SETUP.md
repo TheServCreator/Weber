@@ -106,3 +106,54 @@ Be šios prieigos klientas galės prisijungti prie `/admin/`, bet negalės išsa
 - [ ] `public/admin/config.yml` → `base_url` atnaujintas ir push'intas į `main`
 - [ ] Klientas pakviestas kaip repozitorijos collaborator
 - [ ] Išbandytas prisijungimas per `https://www.topgimtadieniai.lt/admin/`
+
+---
+
+# Vizualus redaktorius — `/redaktorius`
+
+Antras, paprastesnis būdas redaguoti svetainę: **https://www.topgimtadieniai.lt/redaktorius**
+(tik slaptažodis, GitHub paskyros klientui nereikia). Sveltia CMS (`/admin/`) veikia toliau.
+
+Ką galima daryti:
+- spustelėti tekstą puslapyje ir keisti jį vietoje;
+- užvedus ant nuotraukos ar kortelės — **Keisti nuotrauką** (automatiškai sumažinama ir
+  paverčiama WebP, iki 1 MB) ir **Nuoroda**;
+- telefonas, el. paštas ir mygtukai atsidaro mažame lange;
+- šoniniame skydelyje: **paketų kainos** (I–IV / V–VII), **paketų turinys**, **pagrindinė karuselė**,
+  **pramogos**, **kontaktai** (telefonai, el. paštas, miestai ir adresai rezervacijos formoje);
+- **Išsaugoti** — parodomas pakeitimų sąrašas (buvo → bus), tada vienas commit'as į GitHub;
+  Cloudflare Pages per ~1–2 min. perstato svetainę.
+
+## Cloudflare Pages kintamieji
+
+**Workers & Pages → (šio projekto Pages) → Settings → Variables and Secrets** (Production),
+visi kaip **Encrypted**. Slaptažodis ir secret **turi skirtis** nuo Top Stovyklų.
+
+| Kintamasis | Reikšmė / kaip gauti |
+|---|---|
+| `ADMIN_PASSWORD` | Redaktoriaus slaptažodis (≥ 12 simbolių), pvz. `node -e "console.log(require('crypto').randomBytes(12).toString('base64url'))"`. |
+| `ADMIN_SESSION_SECRET` | Atsitiktinė eilutė: `node -e "console.log(require('crypto').randomBytes(48).toString('base64'))"`. Pakeitus — visi atjungiami. |
+| `GITHUB_TOKEN` | Fine-grained token: GitHub → Settings → Developer settings → **Fine-grained tokens** → *Only select repositories*: `TheServCreator/Weber` → *Repository permissions → Contents: Read and write*. |
+| `GITHUB_REPO` | `TheServCreator/Weber` |
+| `GITHUB_BRANCH` | `main` |
+
+**KV prisijungimo bandymų ribojimui (rekomenduojama):** 5 nesėkmingi bandymai / 15 min. per IP.
+Be KV naudojamas Cloudflare Cache API — jis veikia tik ant `topgimtadieniai.lt` domeno, o
+`*.pages.dev` adrese ribojimas neveiktų. Todėl: *Storage & Databases → KV → Create*
+(pvz. `gimtadieniai-admin`), tada Pages projekte **Settings → Bindings → KV namespace**,
+pavadinimas **`ADMIN_KV`**.
+
+Pakeitus kintamuosius — **Deployments → Retry deployment** (arba naujas push), kad įsigaliotų.
+
+## Lokalus testavimas
+
+Sukurk `.dev.vars` (jis gitignore'intas, niekada necommit'inamas) su aukščiau išvardintais
+kintamaisiais, tada:
+
+```bash
+npm run build
+npx wrangler pages dev dist
+```
+
+ir atidaryk http://127.0.0.1:8788/redaktorius (dėmesio: su tikru tokenu išsaugojimai
+commit'inami į tikrą repo — testams naudok atskirą `GITHUB_BRANCH`).
