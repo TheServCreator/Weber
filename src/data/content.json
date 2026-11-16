@@ -54,9 +54,18 @@
       "hint": "Kūrybinga LEGO šventė",
       "link": "https://www.bricks4kidz.lt/gimtadienio-sventes/",
       "images": [
-        { "image": "/photos/b4k-kit-8.jpg", "alt": "Vaikai kuria LEGO modelį Bricks4Kidz šventėje" },
-        { "image": "/photos/b4k-kit-13.jpg", "alt": "Vaikai su edukatore konstruoja LEGO mechanizmą" },
-        { "image": "/photos/b4k-lego-makete.jpg", "alt": "Vaikai kuria bendrą LEGO maketą" }
+        {
+          "image": "/photos/b4k-kit-8.jpg",
+          "alt": "Vaikai kuria LEGO modelį Bricks4Kidz šventėje"
+        },
+        {
+          "image": "/photos/b4k-kit-13.jpg",
+          "alt": "Vaikai su edukatore konstruoja LEGO mechanizmą"
+        },
+        {
+          "image": "/photos/b4k-lego-makete.jpg",
+          "alt": "Vaikai kuria bendrą LEGO maketą"
+        }
       ]
     },
     {
@@ -64,8 +73,14 @@
       "hint": "Medicininė edukacija ir pramoga",
       "link": "https://littlemedicalschool.com/lithuania/parties/",
       "images": [
-        { "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800", "alt": "Medical roleplay" },
-        { "image": "/photos/lms-operacija.jpg", "alt": "Vaikai atlieka operaciją per Little Medical School šventę" }
+        {
+          "image": "https://cdn.builder.io/api/v1/image/assets%2Ffc207801b22940b69c4754284e090cf1%2Fa6330e8e7e594afc91839b8c7fc16f25?format=webp&width=800",
+          "alt": "Medical roleplay"
+        },
+        {
+          "image": "/photos/lms-operacija.jpg",
+          "alt": "Vaikai atlieka operaciją per Little Medical School šventę"
+        }
       ]
     },
     {
@@ -73,9 +88,18 @@
       "hint": "Įkvėpk Meškučiui gyvybę!",
       "link": "/#teddy-birthdays",
       "images": [
-        { "image": "/photos/meskuciai-teddy.jpg", "alt": "Vaikai puošia savo meškučius per gimtadienio šventę" },
-        { "image": "/photos/meskuciai-vaikai.jpg", "alt": "Vaikai su šventinėmis kepurėlėmis kuria savo meškučius" },
-        { "image": "/photos/meskuciai-stalas.jpg", "alt": "Meškučių kūrimo dirbtuvės — vaikai prie bendro stalo" }
+        {
+          "image": "/photos/meskuciai-teddy.jpg",
+          "alt": "Vaikai puošia savo meškučius per gimtadienio šventę"
+        },
+        {
+          "image": "/photos/meskuciai-vaikai.jpg",
+          "alt": "Vaikai su šventinėmis kepurėlėmis kuria savo meškučius"
+        },
+        {
+          "image": "/photos/meskuciai-stalas.jpg",
+          "alt": "Meškučių kūrimo dirbtuvės — vaikai prie bendro stalo"
+        }
       ]
     }
   ],
@@ -170,11 +194,26 @@
     }
   ],
   "cities": [
-    { "value": "vilnius-gabijos", "label": "Vilnius — Gabijos g. 40" },
-    { "value": "vilnius-sakalu", "label": "Vilnius — Sakalų g. 6" },
-    { "value": "kaunas", "label": "Kaunas" },
-    { "value": "klaipeda", "label": "Klaipėda" },
-    { "value": "panevezys", "label": "Panevėžys" }
+    {
+      "value": "vilnius-gabijos",
+      "label": "Vilnius — Gabijos g. 40"
+    },
+    {
+      "value": "vilnius-sakalu",
+      "label": "Vilnius — Sakalų g. 6"
+    },
+    {
+      "value": "kaunas",
+      "label": "Kaunas"
+    },
+    {
+      "value": "klaipeda",
+      "label": "Klaipėda"
+    },
+    {
+      "value": "panevezys",
+      "label": "Panevėžys"
+    }
   ],
   "themes": [
     {
@@ -258,8 +297,14 @@
       "logoAlt": "Bricks4Kidz",
       "link": "https://www.bricks4kidz.lt/",
       "socials": [
-        { "platform": "facebook", "url": "https://www.facebook.com/Bricks4KidzLietuva" },
-        { "platform": "instagram", "url": "https://www.instagram.com/bricks4kidzlietuva/" }
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/Bricks4KidzLietuva"
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/bricks4kidzlietuva/"
+        }
       ]
     },
     {
@@ -267,8 +312,14 @@
       "logoAlt": "Little Medical School",
       "link": "https://littlemedicalschool.com/lithuania/",
       "socials": [
-        { "platform": "facebook", "url": "https://www.facebook.com/LittlemedicalschoolLietuva" },
-        { "platform": "instagram", "url": "https://www.instagram.com/mazojimedicinosmokykla/" }
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/LittlemedicalschoolLietuva"
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/mazojimedicinosmokykla/"
+        }
       ]
     },
     {
@@ -276,7 +327,10 @@
       "logoAlt": "Business Kids",
       "link": "https://businesskids.lt/",
       "socials": [
-        { "platform": "facebook", "url": "https://www.facebook.com/profile.php?id=61572094061392" }
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/profile.php?id=61572094061392"
+        }
       ]
     },
     {
@@ -284,8 +338,14 @@
       "logoAlt": "Meškučiai",
       "link": "https://www.facebook.com/profile.php?id=100064280611950",
       "socials": [
-        { "platform": "facebook", "url": "https://www.facebook.com/profile.php?id=100064280611950" },
-        { "platform": "instagram", "url": "https://www.instagram.com/meskuciai_/" }
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/profile.php?id=100064280611950"
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/meskuciai_/"
+        }
       ]
     }
   ]
